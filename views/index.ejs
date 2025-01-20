@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        .carta {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 90%;
+            height: 550px;
+            flex-shrink: 0;
+        }
+
+        #cartas-container {
+            display: flex;
+            overflow-x: scroll;
+            width: 100%;
+            /* Agora o container ocupa 100% da largura disponível */
+            gap: 10px;
+            /* Adiciona espaço entre as cartas */
+            padding: 10px 0;
+            /* Adiciona padding para suavizar a rolagem */
+        }
+
+        .campo-de-batalha {
+            width: 100%;
+            height: 60vh;
+            background: url(https://i.etsystatic.com/18388031/r/il/5d898f/3983787500/il_fullxfull.3983787500_eebf.jpg);
+            background-size: cover;
+            background-position: center;
+
+        }
+
+        .enemy {
+            width: 100%;
+            height: 30vh;
+            display: flex;
+            background: url(https://t4.ftcdn.net/jpg/08/36/75/09/360_F_836750955_LVolMx61cAuIFVBbY2ttnR9msbCvkWFv.jpg);
+            background-size: cover;
+            background-position: top;
+
+            shadow {
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+
+                .enemyBody {
+                    animation: animate 2s infinite;
+                }
+            }
+        }
+
+        @keyframes animate {
+            0% {
+                margin-top: 0px;
+            }
+
+            50% {
+                margin-top: 10px;
+            }
+
+            100% {
+                margin-top: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="enemy">
+        <shadow>
+            <div style="height: 100%; display: flex; ">
+                <img class="enemyBody" src="<%=Dio.aparencia%>" width="180px;">
+            </div>
+        </shadow>
+    </div>
+    <div id="campo-de-batalha" class="campo-de-batalha"></div>
+    <div id="cartas-container">
+        <!-- Cartas serão carregadas aqui -->
+    </div>
+
+    <script>
+        function danoFixoPorTurno(p, p2) {
+
+            if (p.envenenado.veneno == true) {
+                p.vida += p.envenenado.dano;
+            }
+
+            //if (p2.envenenado.veneno == true){
+            //    p2.vida += p.envenenado.dano;
+            //}
+        }
+        function turno(cartaP1, cartaNPC, P1, NPC) {
+            if (cartaP1.tipo == 'veneno') {
+                NPC.envenenado.veneno = true;
+                NPC.envenenado.dano = cartaP1.dano;
+                console.log(NPC);
+            } else if (cartaP1.tipo == 'ativada') {
+                if (cartaP1.dano > 0) {
+                    P1.vida += cartaP1.dano;
+                    console.log(cartaP1)
+                }
+                if (cartaP1.custoEnergia > 0) {
+                    P1.energia += cartaP1.custoEnergia;
+                    console.log(cartaP1)
+                }
+            } else if (cartaP1.tipo == 'ataque') {
+                P1.energia += cartaP1.custoEnergia;
+                NPC.vida += cartaP1.dano;
+            }
+            console.log(NPC, P1);
+            danoFixoPorTurno(NPC, P1)
+        }
+        let cartap1 = null;
+        let cartanpc = null;
+
+        // Função para carregar cartas via AJAX
+        async function carregarCartas() {
+            try {
+                const response = await fetch('/npc'); // Faz uma requisição para a rota '/cartas'
+                const players = await response.json();
+                console.log(players);
+                const container = document.getElementById('cartas-container');
+                container.innerHTML = ''; // Limpa o conteúdo atual
+
+                // Adiciona cada carta ao container
+                players.Player.cartas.forEach(carta => {
+
+                    const cartaDiv = document.createElement('div');
+                    cartaDiv.className = 'carta';
+                    cartaDiv.setAttribute('data-id', carta.id);
+                    cartaDiv.innerHTML = `
+                            <div class="cardIMG" style="width: 100%; height: 300px; background: url('${carta.desc}'); background-size: cover; background-position: center;"></div>
+                            <pre style="font-size: 12px; text-align: center;"><strong>${carta.nome}</strong></pre>
+            ${carta.modelo ? `<p style="font-size: 11px;">${carta.modelo}</p>` : ''}
+            ${carta.custoEnergia !== undefined && carta.custoEnergia < 0 ? `<p><strong>Custo de Energia:</strong> ${carta.custoEnergia}%⚡</p>` : ''}
+            ${carta.dano !== undefined && carta.dano < 0 && carta.dano ? `<p><strong>Dano:</strong> ${carta.dano}%💔</p>` : ''}
+`;
+                    container.appendChild(cartaDiv);
+                    const cartaElemento = document.querySelector(`[data-id="${carta.id}"]`);
+                    cartaElemento.addEventListener('click', function () {
+                        cartap1 = carta;
+                        turno(carta, carta, players.Player, players.Dio);
+                    });
+                });
+            } catch (error) {
+                console.error('Erro ao carregar cartas:', error);
+            }
+        }
+
+        // Carrega as cartas ao carregar a página
+        document.addEventListener('DOMContentLoaded', carregarCartas);
+    </script>
+</body>
+
+</html>
