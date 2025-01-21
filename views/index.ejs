@@ -35,7 +35,7 @@
             position: fixed;
             transition: 0.5s all linear;
             background: rgba(0, 0, 0, 0.600);
-            top: 80%;
+            top: 90%;
             width: 100%;
             /* Agora o container ocupa 100% da largura disponível */
             gap: 10px;
@@ -381,7 +381,7 @@
                         console.log("cimaaa")
                     } else if (movedDistance <= -178) {
                         console.log("baixooo")
-                        document.getElementById('cartas-container').style.top = "80%"
+                        document.getElementById('cartas-container').style.top = "90%"
                     }
                 });
 
@@ -571,7 +571,7 @@
                                     movedDistance = startY - currentY;  // Distância movida (em pixels)
                                     if (CartaPlayer == null) {
                                         // Verifica se o movimento foi maior que 10 cm (aproximadamente 378 pixels)
-                                        if (movedDistance >= 378) {
+                                        if (movedDistance >= 150) {
                                             players.Player.cartas.forEach(carta => {
                                                 document.querySelector(`[data-id="${carta.id}"]`).style.border = "none";
                                             });
