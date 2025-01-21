@@ -34,7 +34,8 @@
             overflow-x: scroll;
             position: fixed;
             transition: 0.5s all linear;
-            bottom: -95%;
+            background: rgba(0, 0, 0, 0.205); 
+            bottom: -80%;
             width: 100%;
             /* Agora o container ocupa 100% da largura disponível */
             gap: 10px;
@@ -50,7 +51,7 @@
             background: url(https://i.etsystatic.com/18388031/r/il/5d898f/3983787500/il_fullxfull.3983787500_eebf.jpg);
             background-size: cover;
             background-position: center;
-            display: flex; 
+            display: flex;
             justify-content: space-around;
             align-items: center;
             flex-direction: column;
@@ -95,6 +96,14 @@
 </head>
 
 <body>
+    <div id="tarja"
+        style="position: fixed; background-color: black; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+        <h3 id="turno" style="color: white; text-align: center; margin: 0;">Quem começa jogando, é...</h3>
+        <button style="padding: 10px; margin: 10px;"
+            onclick="document.getElementById('tarja').style.display = 'none';">Ok!</button>
+
+    </div>
     <div class="enemy">
         <shadow>
             <div style="height: 100%; display: flex; ">
@@ -104,9 +113,10 @@
     </div>
     <div id="campo-de-batalha" class="campo-de-batalha">
         <div id="card-npc" style="width: 75px; height: 100px; background-color: rgba(0, 0, 0, 0.5);">
-            
+
         </div>
-        <div id="card-player" style="width: 75px; height: 100px; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div id="card-player"
+            style="width: 75px; height: 100px; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; flex-direction: column;">
 
         </div>
     </div>
@@ -115,14 +125,31 @@
     </div>
 
     <script>
+        
+        var quemComeca = Math.random() < 0.5 ? "Dio" : "Você";
+
+        // Atualiza o conteúdo do elemento com o ID "turno"
+        document.getElementById("turno").innerHTML = "Quem começa jogando é... " + quemComeca + "!";
+
+        if (quemComeca == "Dio") {
+            playerTurn = false;
+
+        } else {
+            playerTurn = true;
+        }
+
         let CartaPlayer;
         let CartaNPC;
+        let AtributosNPC;
+        let AtributosPlayer;
         let startY = 0;  // Armazena a posição inicial Y
         let movedDistance = 0;  // Distância movida até agora
 
         document.body.addEventListener('keydown', (e) => {
             if (CartaPlayer != null && CartaNPC != null) {
-              
+                turno(CartaPlayer, CartaNPC, AtributosPlayer, AtributosNPC)
+                CartaPlayer = null;
+                CartaNPC = null;
             }
 
         })
@@ -142,9 +169,9 @@
             movedDistance = startY - currentY;  // Distância movida (em pixels)
             // Verifica se o movimento foi maior que 10 cm (aproximadamente 378 pixels)
             if (movedDistance >= 378) {
-                document.getElementById('cartas-container').style.bottom = "-10%"
+                document.getElementById('cartas-container').style.bottom = "-0%"
             } else if (movedDistance <= -378) {
-                document.getElementById('cartas-container').style.bottom = "-95%"
+                document.getElementById('cartas-container').style.bottom = "-80%"
             }
         });
 
@@ -162,6 +189,11 @@
             }
         }
         function turno(cartaP1, cartaNPC, P1, NPC) {
+            if (cartaP1.tipo == 'defesa') {
+                cartaNPC.dano = 0;
+            } else if (cartaNPC.tipo == 'defesa') {
+                cartaP1.dano = 0;
+            }
             if (cartaP1.tipo == 'veneno') {
                 NPC.envenenado.veneno = true;
                 NPC.envenenado.dano = cartaP1.dano;
@@ -179,22 +211,104 @@
                 P1.energia += cartaP1.custoEnergia;
                 NPC.vida += cartaP1.dano;
             }
-            console.log(NPC, P1);
+            if (cartaNPC.tipo == 'veneno') {
+                P1.envenenado.veneno = true;
+                P1.envenenado.dano = cartaNPC.dano;
+                console.log(NPC);
+            } else if (cartaNPC.tipo == 'ativada') {
+                if (cartaNPC.dano > 0) {
+                    NPC.vida += cartaNPC.dano;
+                    console.log(cartaNPC)
+                }
+                if (cartaNPC.custoEnergia > 0) {
+                    NPC.energia += cartaNPC.custoEnergia;
+                    console.log(cartaNPC)
+                }
+            } else if (cartaNPC.tipo == 'ataque') {
+                NPC.energia += cartaNPC.custoEnergia;
+                console.log(P1.vida + " " + cartaNPC.dano)
+                P1.vida += cartaNPC.dano;
+            }
+            cartaP1 = null;
+            cartaNPC = null;
+            console.log(NPC);
+            console.log(P1);
+            document.getElementById('sub-card-npc').style.opacity = 0
+            document.getElementById('sub-card-player').style.opacity = 0
             danoFixoPorTurno(NPC, P1)
+            if (playerTurn == false) {
+                playerTurn = true;
+            } else {
+                playerTurn = false;
+            }
         }
-        let cartap1 = null;
-        let cartanpc = null;
 
         // Função para carregar cartas via AJAX
         async function carregarCartas() {
             try {
+                // Gera um número aleatório (0 ou 1)
+
                 const response = await fetch('/npc'); // Faz uma requisição para a rota '/cartas'
                 const players = await response.json();
+                AtributosNPC = players.Dio;
+                AtributosPlayer = players.Player;
                 console.log(players);
                 const container = document.getElementById('cartas-container');
                 container.innerHTML = ''; // Limpa o conteúdo atual
+                let i = 2;
+                setInterval(() => {
+                    console.log(playerTurn + " " + CartaNPC)
+                    if (playerTurn == false && CartaNPC == null) {
+                        setTimeout(() => {
+                            if (players.Dio.vida >= 200) {
+                                CartaNPC = players.Dio.cartas[i];
+                                console.log(players.Dio.cartas[i]);
+                                if (i < 3) {
+                                    i++
+                                } else {
+                                    i = 2;
+                                }
+                            
+                                document.getElementById('card-npc').innerHTML = "";
+                                document.getElementById('card-npc').innerHTML = `
+                                        <div id="sub-card-npc" style="opacity: 0; transition: 3s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                                        <div style="height: 45%; width: 90%; background-image: url(${CartaNPC.desc}); background-size: cover; background-position: center;"></div>
+                                        <div style="height: 50%; width: 100%; background-color: white;">
+                                        ${CartaNPC.dano !== undefined && CartaNPC.dano < 0 && CartaNPC.dano ? `<p style="font-size: 12px; margin: 1px">${CartaNPC.dano}%💔</p>` : ``}
+                                        ${CartaNPC.dano !== undefined && CartaNPC.dano > 0 && CartaNPC.dano ? `<p style="font-size: 12px; margin: 1px">${CartaNPC.dano}%❤️</p>` : ``} 
+                                         ${CartaNPC.custoEnergia !== undefined && CartaNPC.custoEnergia < 0 && CartaNPC.custoEnergia ? `<p style="font-size: 12px; margin: 1px">${CartaNPC.custoEnergia}%⚡</p>` : ``}
+                                        ${CartaNPC.custoEnergia !== undefined && CartaNPC.custoEnergia > 0 && CartaNPC.custoEnergia ? `<p style="font-size: 12px; margin: 1px">${CartaNPC.custoEnergia}%⚡</p>` : ``}   
+                                        </div>
+                                    `
+                                setTimeout(() => {
+                                    document.getElementById('sub-card-npc').style.opacity = 1;
+                                }, 500);
+
+                            }
+                        }, 3000);
+                        playerTurn = true;
+                    }
+
+                }, 2000);
+                setInterval(() => {
+
+                    if (CartaNPC != null && CartaPlayer != null) {
+
+                    }
+                }, 100);
 
                 // Adiciona cada carta ao container
+                players.Dio.cartas.forEach(carta => {
+    
+                    const cartaElemento = document.getElementById(`card-npc`);
+                    cartaElemento.addEventListener('click', function(){
+                        try {
+                            alert(CartaNPC.modelo);
+
+                        } catch(error){
+
+                        } })
+                })
                 players.Player.cartas.forEach(carta => {
 
                     const cartaDiv = document.createElement('div');
@@ -222,35 +336,55 @@
 
                     // Seleciona o evento touchmove
                     cartaElemento.addEventListener('touchmove', function (event) {
+                        if (playerTurn == true) {
 
-                        // Calcula a distância movida no eixo Y
-                        const currentY = event.touches[0].clientY;
-                        movedDistance = startY - currentY;  // Distância movida (em pixels)
-                        if (CartaPlayer == null) {
-                            // Verifica se o movimento foi maior que 10 cm (aproximadamente 378 pixels)
-                            if (movedDistance >= 378) {
-                                players.Player.cartas.forEach(carta => {
-                                    document.querySelector(`[data-id="${carta.id}"]`).style.border = "none";
-                                });
-                                cartaElemento.style.border = "2px solid yellow"
-                                cartaElemento.style.marginBottom = "200vh";
-                                const dataId = cartaElemento.getAttribute('data-id');
-                                players.Player.cartas.forEach(carta => {
-                                    if (carta.id == dataId) {
-                                        document.getElementById('card-player').innerHTML = `
-                                        <div style=" height: 45%; width: 90%; background-image: url(${carta.desc}); background-size: cover; background-position: center;"></div>
-                                        <div style="height: 50%; width: 100%; background-color: white;> </div>"
+                            // Calcula a distância movida no eixo Y
+                            const currentY = event.touches[0].clientY;
+                            movedDistance = startY - currentY;  // Distância movida (em pixels)
+                            if (CartaPlayer == null) {
+                                // Verifica se o movimento foi maior que 10 cm (aproximadamente 378 pixels)
+                                if (movedDistance >= 378) {
+                                    players.Player.cartas.forEach(carta => {
+                                        document.querySelector(`[data-id="${carta.id}"]`).style.border = "none";
+                                    });
+                                    cartaElemento.style.marginBottom = "200vh";
+                                    cartaElemento.innerHTML = ""
+                                    setTimeout(() => {
                                         
-                                        `
-                                        CartaPlayer = carta;
-                                        CartaNPC = carta;
-                                    }
-                                });
-                                console.log(CartaNPC);
-                                
+                                        cartaElemento.style.marginLeft = "0px";
+                                        cartaElemento.style.marginRight = "0px";
+                                        cartaElemento.style.padding = "0px";
+                                        cartaElemento.style.width = "0px";
+
+                                    }, 2000);
+                                    setTimeout(() => {
+                                        cartaElemento.style.display = "none";
+                                    }, 3000);
+                                    const dataId = cartaElemento.getAttribute('data-id');
+                                    players.Player.cartas.forEach(carta => {
+                                        if (carta.id == dataId) {
+                                            document.getElementById('card-player').innerHTML = "";
+                                            document.getElementById('card-player').innerHTML = `
+                                        <div id="sub-card-player" style="opacity: 0; transition: 3s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                                        <div style="height: 45%; width: 90%; background-image: url(${carta.desc}); background-size: cover; background-position: center;"></div>
+                                        <div style="height: 50%; width: 100%; background-color: white;">
+                                        ${carta.dano !== undefined && carta.dano < 0 && carta.dano ? `<p style="font-size: 12px; margin: 1px">${carta.dano}%💔</p>` : ``}
+                                        ${carta.dano !== undefined && carta.dano > 0 && carta.dano ? `<p style="font-size: 12px; margin: 1px">${carta.dano}%❤️</p>` : ``} 
+                                         ${carta.custoEnergia !== undefined && carta.custoEnergia < 0 && carta.custoEnergia ? `<p style="font-size: 12px; margin: 1px">${carta.custoEnergia}%⚡</p>` : ``}
+                                        ${carta.custoEnergia !== undefined && carta.custoEnergia > 0 && carta.custoEnergia ? `<p style="font-size: 12px; margin: 1px">${carta.custoEnergia}%⚡</p>` : ``}   
+                                        </div>
+                                    `
+                                            setTimeout(() => {
+                                                document.getElementById('sub-card-player').style.opacity = 1;
+                                                CartaPlayer = carta;
+                                                playerTurn = false;
+                                            }, 500);
+
+                                        }
+                                    });
+                                }
                             }
                         }
-
                     });
                     cartaElemento.addEventListener('touchend', function (event) {
 

@@ -78,9 +78,13 @@ const c8 = new Carta("8", `🌿-❨❨🌟•'Cura Natural'•🌟❩❩-🌿
   Regenera:『+30%⚡』De Energia. Regenera:『+30%❤️』De Vida.
   A energia natural do ambiente restaura o usuário, mas de forma mais contida. É ideal para prolongar batalhas com equilíbrio.
   \n➖Essa Habilidade Oferece Recuperação Moderada.`, "https://i.pinimg.com/736x/3d/91/18/3d9118975984e606f68a0bbe92edd716.jpg");
-
+  const c9 = new Carta("9", `🌁-❨❨👩🏻•'Fúria do Dragão'•👩🏻❩❩-🌁
+    『ドラゴンの怒り, Doragon no Ikari』`, `ataque`, -40, -100, 
+`Dano:『100%💔』. Custo De Energia:『-40%⚡』.  
+Os dragões do novo mundo, apesar de raros, ensinam aos guerreiros técnicas destrutivas. Com esta habilidade, o usuário canaliza sua fúria e liberta um golpe avassalador em forma de chamas.  
+\n➖Essa É Uma Habilidade Ofensiva Avançada.`, 'https://i.pinimg.com/736x/f2/2a/22/f22a22d9d1c68250be3e08ec24df9b8e.jpg');
 const Dio = new NPC(`Dio`, [c1, c2, c3, c4], 300, 300, `https://www.pngall.com/wp-content/uploads/14/Dio-PNG-Images.png`)
-const Player = new NPC(`Jogador`, [c5, c6, c7, c8], 300, 300, `https://dl.bc.cdn.garenanow.com/bcm/br/img/character/character_a1.png`)
+const Player = new NPC(`Jogador`, [c5, c6, c7, c8, c9], 300, 300, `https://dl.bc.cdn.garenanow.com/bcm/br/img/character/character_a1.png`)
 // Rota principal
 app.get('/', (req, res) => {
   res.render('index', {Dio: Dio});
