@@ -83,7 +83,7 @@ const c8 = new Carta("8", `🌿-❨❨🌟•'Cura Natural'•🌟❩❩-🌿
 `Dano:『100%💔』. Custo De Energia:『-40%⚡』.  
 Os dragões do novo mundo, apesar de raros, ensinam aos guerreiros técnicas destrutivas. Com esta habilidade, o usuário canaliza sua fúria e liberta um golpe avassalador em forma de chamas.  
 \n➖Essa É Uma Habilidade Ofensiva Avançada.`, 'https://i.pinimg.com/736x/f2/2a/22/f22a22d9d1c68250be3e08ec24df9b8e.jpg');
-const Dio = new NPC(`Dio`, [c1, c2, c3, c4], 300, 300, `https://www.pngall.com/wp-content/uploads/14/Dio-PNG-Images.png`)
+const Dio = new NPC(`Dio`, [c1, c2, c3, c4, c7], 300, 300, `https://www.pngall.com/wp-content/uploads/14/Dio-PNG-Images.png`)
 const Player = new NPC(`Jogador`, [c5, c6, c7, c8, c9], 300, 300, `https://dl.bc.cdn.garenanow.com/bcm/br/img/character/character_a1.png`)
 // Rota principal
 app.get('/', (req, res) => {
