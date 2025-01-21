@@ -25,17 +25,23 @@
             width: 90%;
             height: 550px;
             flex-shrink: 0;
+            background-color: white;
+            transition: 1s all linear;
         }
 
         #cartas-container {
             display: flex;
             overflow-x: scroll;
+            position: fixed;
+            transition: 0.5s all linear;
+            bottom: -95%;
             width: 100%;
             /* Agora o container ocupa 100% da largura disponível */
             gap: 10px;
             /* Adiciona espaço entre as cartas */
-            padding: 10px 0;
+            padding: 10px 0px 0px 10px;
             /* Adiciona padding para suavizar a rolagem */
+            align-items: end;
         }
 
         .campo-de-batalha {
@@ -44,7 +50,10 @@
             background: url(https://i.etsystatic.com/18388031/r/il/5d898f/3983787500/il_fullxfull.3983787500_eebf.jpg);
             background-size: cover;
             background-position: center;
-
+            display: flex; 
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
         }
 
         .enemy {
@@ -93,21 +102,64 @@
             </div>
         </shadow>
     </div>
-    <div id="campo-de-batalha" class="campo-de-batalha"></div>
+    <div id="campo-de-batalha" class="campo-de-batalha">
+        <div id="card-npc" style="width: 75px; height: 100px; background-color: rgba(0, 0, 0, 0.5);">
+            
+        </div>
+        <div id="card-player" style="width: 75px; height: 100px; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; flex-direction: column;">
+
+        </div>
+    </div>
     <div id="cartas-container">
         <!-- Cartas serão carregadas aqui -->
     </div>
 
     <script>
+        let CartaPlayer;
+        let CartaNPC;
+        let startY = 0;  // Armazena a posição inicial Y
+        let movedDistance = 0;  // Distância movida até agora
+
+        document.body.addEventListener('keydown', (e) => {
+            if (CartaPlayer != null && CartaNPC != null) {
+              
+            }
+
+        })
+
+        // Seleciona o evento touchstart
+        document.body.addEventListener('touchstart', function (event) {
+            // Obtém a posição do toque inicial (em pixels)
+            startY = event.touches[0].clientY;
+            movedDistance = 0;  // Reinicia a distância movida
+        });
+
+        // Seleciona o evento touchmove
+        document.body.addEventListener('touchmove', function (event) {
+
+            // Calcula a distância movida no eixo Y
+            const currentY = event.touches[0].clientY;
+            movedDistance = startY - currentY;  // Distância movida (em pixels)
+            // Verifica se o movimento foi maior que 10 cm (aproximadamente 378 pixels)
+            if (movedDistance >= 378) {
+                document.getElementById('cartas-container').style.bottom = "-10%"
+            } else if (movedDistance <= -378) {
+                document.getElementById('cartas-container').style.bottom = "-95%"
+            }
+        });
+
+        // Seleciona o evento touchend
+        document.body.addEventListener('touchend', function (event) {
+        });
         function danoFixoPorTurno(p, p2) {
 
             if (p.envenenado.veneno == true) {
                 p.vida += p.envenenado.dano;
             }
 
-            //if (p2.envenenado.veneno == true){
-            //    p2.vida += p.envenenado.dano;
-            //}
+            if (p2.envenenado.veneno == true) {
+                p2.vida += p.envenenado.dano;
+            }
         }
         function turno(cartaP1, cartaNPC, P1, NPC) {
             if (cartaP1.tipo == 'veneno') {
@@ -152,15 +204,58 @@
                             <div class="cardIMG" style="width: 100%; height: 300px; background: url('${carta.desc}'); background-size: cover; background-position: center;"></div>
                             <pre style="font-size: 12px; text-align: center;"><strong>${carta.nome}</strong></pre>
             ${carta.modelo ? `<p style="font-size: 11px;">${carta.modelo}</p>` : ''}
-            ${carta.custoEnergia !== undefined && carta.custoEnergia < 0 ? `<p><strong>Custo de Energia:</strong> ${carta.custoEnergia}%⚡</p>` : ''}
-            ${carta.dano !== undefined && carta.dano < 0 && carta.dano ? `<p><strong>Dano:</strong> ${carta.dano}%💔</p>` : ''}
+            ${carta.custoEnergia !== undefined && carta.custoEnergia < 0 ? `<p style="font-size: 10px;"><strong>Custo de Energia:</strong> ${carta.custoEnergia}%⚡</p>` : ''}
+            ${carta.dano !== undefined && carta.dano < 0 && carta.dano ? `<p style="font-size: 10px;"><strong>Dano:</strong> ${carta.dano}%💔</p>` : ''}
 `;
                     container.appendChild(cartaDiv);
                     const cartaElemento = document.querySelector(`[data-id="${carta.id}"]`);
-                    cartaElemento.addEventListener('click', function () {
-                        cartap1 = carta;
-                        turno(carta, carta, players.Player, players.Dio);
+                    let startY = 0;  // Armazena a posição inicial Y
+                    let movedDistance = 0;  // Distância movida até agora
+
+                    // Seleciona o evento touchstart
+                    cartaElemento.addEventListener('touchstart', function (event) {
+                        // Obtém a posição do toque inicial (em pixels)
+                        startY = event.touches[0].clientY;
+                        movedDistance = 0;  // Reinicia a distância movida
+
                     });
+
+                    // Seleciona o evento touchmove
+                    cartaElemento.addEventListener('touchmove', function (event) {
+
+                        // Calcula a distância movida no eixo Y
+                        const currentY = event.touches[0].clientY;
+                        movedDistance = startY - currentY;  // Distância movida (em pixels)
+                        if (CartaPlayer == null) {
+                            // Verifica se o movimento foi maior que 10 cm (aproximadamente 378 pixels)
+                            if (movedDistance >= 378) {
+                                players.Player.cartas.forEach(carta => {
+                                    document.querySelector(`[data-id="${carta.id}"]`).style.border = "none";
+                                });
+                                cartaElemento.style.border = "2px solid yellow"
+                                cartaElemento.style.marginBottom = "200vh";
+                                const dataId = cartaElemento.getAttribute('data-id');
+                                players.Player.cartas.forEach(carta => {
+                                    if (carta.id == dataId) {
+                                        document.getElementById('card-player').innerHTML = `
+                                        <div style=" height: 45%; width: 90%; background-image: url(${carta.desc}); background-size: cover; background-position: center;"></div>
+                                        <div style="height: 50%; width: 100%; background-color: white;> </div>"
+                                        
+                                        `
+                                        CartaPlayer = carta;
+                                        CartaNPC = carta;
+                                    }
+                                });
+                                console.log(CartaNPC);
+                                
+                            }
+                        }
+
+                    });
+                    cartaElemento.addEventListener('touchend', function (event) {
+
+                    });
+
                 });
             } catch (error) {
                 console.error('Erro ao carregar cartas:', error);
