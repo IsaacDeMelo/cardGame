@@ -61,8 +61,8 @@ const c4 = new Carta("4", `⏺️-❨❨🌁•'Mil Coordenadas'•🌁❩❩-�
      『千の座標, Sen no zahyō』 `, `defesa`, -50, 0, `Custo De Energia:『-50%⚡』. Com esta técnica o usuário usa de sua inteligência para criar várias pistas falsas de sua localização, fazendo o seu oponente seguir caminhos diferentes, e com isso criando tempo suficiente para se ocultar de qualquer ameaça ou até mesmo tomar um cházinho.
 \n ➖Esse Movimento É Uma Ocultação Básica.`, `https://i.pinimg.com/736x/ad/3d/19/ad3d19ef9ea0aa71555b6ee86afdf068.jpg`)
 const c5 = new Carta("5", `🌋-❨❨👊🏻•'Impacto Devastador'•👊🏻❩❩-🌋
-  『破壊的な衝撃, Hakai-teki na Shōgeki』`, 'ataque', -100, -120, `
-  Dano:『120%💔』. Custo De Energia:『-100%⚡』. 
+  『破壊的な衝撃, Hakai-teki na Shōgeki』`, 'ataque', -60, -90, `
+  Dano:『90%💔』. Custo De Energia:『-60%⚡』. 
   Os guerreiros do novo mundo canalizam sua força em um golpe poderoso, causando grande impacto, mas com alto custo de energia.
   \n➖Esse É Um Golpe De Alto Risco E Alta Recompensa.`, "https://i.pinimg.com/736x/c2/01/99/c20199144f919690a698292d35b09ba5.jpg");
 const c6 = new Carta("6", `🛡️-❨❨⚙️•'Escudo do Dragão'•⚙️❩❩-🛡️
