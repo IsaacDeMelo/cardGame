@@ -24,12 +24,13 @@ class Carta {
     }
 }
 class NPC {
-    constructor(nome, cartas, energia, vida, aparencia) {
+    constructor(nome, cartas, energia, vida, aparencia, aparencia2) {
         this.nome = nome;
         this.cartas = cartas;
         this.energia = energia;
         this.vida = vida;
         this.aparencia = aparencia;
+        this.aparencia2 = aparencia2;
         this.envenenado = { veneno: false, dano: 0 }
     }
     toJSON() {
@@ -39,6 +40,7 @@ class NPC {
         energia: this.energia,
         vida: this.vida,
         aparencia: this.aparencia,
+        aparencia2: this.aparencia2,
         envenenado: this.envenenado,
       };
     }
@@ -63,7 +65,7 @@ const c5 = new Carta("5", `🌋-❨❨👊🏻•'Impacto Devastador'•👊🏻
   Dano:『80%💔』. Custo De Energia:『-50%⚡』. 
   Os guerreiros do novo mundo canalizam sua força em um golpe poderoso, causando grande impacto, mas com alto custo de energia.
   \n➖Esse É Um Golpe De Alto Risco E Alta Recompensa.`, "https://i.pinimg.com/736x/21/25/fb/2125fba822083a77c8cb48f5a1c8f10f.jpg");
-const c6 = new Carta("6", `🛡️-❨❨⚙️•'Escudo de Ferro'•⚙️❩❩-🛡️
+const c6 = new Carta("6", `🛡️-❨❨⚙️•'Escudo do Dragão'•⚙️❩❩-🛡️
   『鉄の盾, Tetsu no Tate』`, 'defesa', -50, 0,`
   Custo De Energia:『-50%⚡』. 
   Um escudo reforçado que reduz os danos recebidos, mas consome energia considerável ao ser ativado. Ideal para momentos críticos de defesa.
@@ -78,13 +80,23 @@ const c8 = new Carta("8", `🌿-❨❨🌟•'Cura Natural'•🌟❩❩-🌿
   Regenera:『+30%⚡』De Energia. Regenera:『+30%❤️』De Vida.
   A energia natural do ambiente restaura o usuário, mas de forma mais contida. É ideal para prolongar batalhas com equilíbrio.
   \n➖Essa Habilidade Oferece Recuperação Moderada.`, "https://i.pinimg.com/736x/3d/91/18/3d9118975984e606f68a0bbe92edd716.jpg");
-  const c9 = new Carta("9", `🌁-❨❨👩🏻•'Fúria do Dragão'•👩🏻❩❩-🌁
+const c9 = new Carta("9", `🌁-❨❨👩🏻•'Fúria do Dragão'•👩🏻❩❩-🌁
     『ドラゴンの怒り, Doragon no Ikari』`, `ataque`, -40, -100, 
 `Dano:『100%💔』. Custo De Energia:『-40%⚡』.  
 Os dragões do novo mundo, apesar de raros, ensinam aos guerreiros técnicas destrutivas. Com esta habilidade, o usuário canaliza sua fúria e liberta um golpe avassalador em forma de chamas.  
 \n➖Essa É Uma Habilidade Ofensiva Avançada.`, 'https://i.pinimg.com/736x/f2/2a/22/f22a22d9d1c68250be3e08ec24df9b8e.jpg');
-const Dio = new NPC(`Dio`, [c1, c2, c3, c4, c7], 300, 300, `https://www.pngall.com/wp-content/uploads/14/Dio-PNG-Images.png`)
-const Player = new NPC(`Jogador`, [c5, c6, c7, c8, c9], 300, 300, `https://dl.bc.cdn.garenanow.com/bcm/br/img/character/character_a1.png`)
+const c10 = new Carta("10", `💨-❨❨⚔️•'Golpe Veloz'•⚔️❩❩-💨
+  『速攻の一撃, Sokkō no Ichigeki』`, 'ataque', -40, -80,`
+  Dano:『80%💔』. Custo De Energia:『-40%⚡』. 
+  Um ataque ágil e preciso, perfeito para desgastar o inimigo rapidamente, mas sem causar danos extremos.
+  \n➖Esse É Um Golpe Moderado Focado Em Agilidade.`, "https://i.pinimg.com/736x/75/5b/40/755b40649a49ae583ed65917ce7bd4fb.jpg");
+const c11 = new Carta("11", `🌁-❨❨👩🏻•'Fúria do Oceano'•👩🏻❩❩-🌁
+    『オーシャンフューリー, Ōshanfu~yūrī』`, `ataque`, -30, -50, 
+`Dano:『50%💔』. Custo De Energia:『-30%⚡』.  
+O usuário dessa habilidade usa da Magia aquática para causar danos severos à quem for atingido.  
+\n➖Essa É Uma Habilidade Ofensiva Avançada.`, 'https://i.pinimg.com/736x/c3/54/b4/c354b49cb8b3923cdd768e17a7f194b7.jpg');
+  const Dio = new NPC(`Dio`, [c1, c2, c3, c4, c7], 300, 300, `https://www.pngall.com/wp-content/uploads/14/Dio-PNG-Images.png`, `https://www.pngarts.com/files/10/Dio-PNG-High-Quality-Image.png`)
+const Player = new NPC(`Jogador`, [c5, c6, c7, c8, c9, c10, c11], 300, 300, `https://dl.bc.cdn.garenanow.com/bcm/br/img/character/character_a1.png`)
 // Rota principal
 app.get('/', (req, res) => {
   res.render('index', {Dio: Dio});
