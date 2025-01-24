@@ -14,7 +14,10 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-
+            background: url(https://i.pinimg.com/736x/3e/eb/14/3eeb145e19d3f235e3d647e14eea7ecf.jpg);
+            background-size: contain;
+            background-position: top;
+            background-attachment: fixed;
         }
 
         .carta {
@@ -188,6 +191,234 @@
             animation: spin 2s linear infinite;
         }
 
+        /* From Uiverse.io by augustin_4687 */
+        .button {
+            --stone-50: #fafaf9;
+            --stone-800: #292524;
+            --yellow-400: #facc15;
+
+            font-family: "Rubik", sans-serif;
+            cursor: pointer;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            line-height: 1;
+            font-size: 1rem;
+            border-radius: 1rem;
+            outline: 2px solid transparent;
+            outline-offset: 6px;
+            color: var(--stone-50);
+
+            &:active {
+                outline-color: var(--yellow-400);
+            }
+
+            &:focus-visible {
+                outline-color: var(--yellow-400);
+                outline-style: dashed;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                z-index: 0;
+                height: 200%;
+                max-height: 100px;
+                aspect-ratio: 1;
+                margin: auto;
+                background: white;
+                clip-path: polygon(100% 50%,
+                        91.48% 56.57%,
+                        97.55% 65.45%,
+                        87.42% 69.07%,
+                        90.45% 79.39%,
+                        79.7% 79.7%,
+                        79.39% 90.45%,
+                        69.07% 87.42%,
+                        65.45% 97.55%,
+                        56.57% 91.48%,
+                        50% 100%,
+                        43.43% 91.48%,
+                        34.55% 97.55%,
+                        30.93% 87.42%,
+                        20.61% 90.45%,
+                        20.3% 79.7%,
+                        9.55% 79.39%,
+                        12.58% 69.07%,
+                        2.45% 65.45%,
+                        8.52% 56.57%,
+                        0% 50%,
+                        8.52% 43.43%,
+                        2.45% 34.55%,
+                        12.58% 30.93%,
+                        9.55% 20.61%,
+                        20.3% 20.3%,
+                        20.61% 9.55%,
+                        30.93% 12.58%,
+                        34.55% 2.45%,
+                        43.43% 8.52%,
+                        50% 0%,
+                        56.57% 8.52%,
+                        65.45% 2.45%,
+                        69.07% 12.58%,
+                        79.39% 9.55%,
+                        79.7% 20.3%,
+                        90.45% 20.61%,
+                        87.42% 30.93%,
+                        97.55% 34.55%,
+                        91.48% 43.43%);
+
+                animation: star-rotate 4s linear infinite;
+                opacity: 0.1;
+            }
+
+            &:hover::before {
+                opacity: 1;
+            }
+
+            &>div {
+                padding: 2px;
+                border-radius: 1rem;
+                background-color: var(--yellow-400);
+                transform: translate(-4px, -4px);
+                transition: all 150ms ease;
+                box-shadow:
+                    0.5px 0.5px 0 0 var(--yellow-400),
+                    1px 1px 0 0 var(--yellow-400),
+                    1.5px 1.5px 0 0 var(--yellow-400),
+                    2px 2px 0 0 var(--yellow-400),
+                    2.5px 2.5px 0 0 var(--yellow-400),
+                    3px 3px 0 0 var(--yellow-400),
+                    0 0 0 2px var(--stone-800),
+                    0.5px 0.5px 0 2px var(--stone-800),
+                    1px 1px 0 2px var(--stone-800),
+                    1.5px 1.5px 0 2px var(--stone-800),
+                    2px 2px 0 2px var(--stone-800),
+                    2.5px 2.5px 0 2px var(--stone-800),
+                    3px 3px 0 2px var(--stone-800),
+                    3.5px 3.5px 0 2px var(--stone-800),
+                    4px 4px 0 2px var(--stone-800),
+                    0 0 0 4px var(--stone-50),
+                    0.5px 0.5px 0 4px var(--stone-50),
+                    1px 1px 0 4px var(--stone-50),
+                    1.5px 1.5px 0 4px var(--stone-50),
+                    2px 2px 0 4px var(--stone-50),
+                    2.5px 2.5px 0 4px var(--stone-50),
+                    3px 3px 0 4px var(--stone-50),
+                    3.5px 3.5px 0 4px var(--stone-50),
+                    4px 4px 0 4px var(--stone-50);
+
+                .button:hover & {
+                    transform: translate(0, 0);
+                    box-shadow:
+                        0 0 0 0 var(--yellow-400),
+                        0 0 0 0 var(--yellow-400),
+                        0 0 0 0 var(--yellow-400),
+                        0 0 0 0 var(--yellow-400),
+                        0 0 0 0 var(--yellow-400),
+                        0 0 0 0 var(--yellow-400),
+                        0 0 0 2px var(--stone-800),
+                        0 0 0 2px var(--stone-800),
+                        0 0 0 2px var(--stone-800),
+                        0 0 0 2px var(--stone-800),
+                        0 0 0 2px var(--stone-800),
+                        0 0 0 2px var(--stone-800),
+                        0 0 0 2px var(--stone-800),
+                        0 0 0 2px var(--stone-800),
+                        0 0 0 2px var(--stone-800),
+                        0 0 0 4px var(--stone-50),
+                        0 0 0 4px var(--stone-50),
+                        0 0 0 4px var(--stone-50),
+                        0 0 0 4px var(--stone-50),
+                        0 0 0 4px var(--stone-50),
+                        0 0 0 4px var(--stone-50),
+                        0 0 0 4px var(--stone-50),
+                        0 0 0 4px var(--stone-50),
+                        0 0 0 4px var(--stone-50);
+                }
+
+                &>div {
+                    position: relative;
+                    pointer-events: none;
+                    border-radius: calc(1rem - 2px);
+                    background-color: var(--stone-800);
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        inset: 0;
+                        border-radius: 1rem;
+                        opacity: 0.1;
+                        background-image: radial-gradient(rgb(255 255 255 / 80%) 20%,
+                                transparent 20%),
+                            radial-gradient(rgb(255 255 255 / 100%) 20%, transparent 20%);
+                        background-position:
+                            0 0,
+                            4px 4px;
+                        background-size: 8px 8px;
+                        mix-blend-mode: hard-light;
+                        box-shadow: inset 0 0 0 1px var(--stone-800);
+                        animation: dots 0.4s infinite linear;
+                        transition: opacity 150ms ease;
+                    }
+
+                    &>div {
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        padding: 0.75rem 1.25rem;
+                        gap: 0.25rem;
+                        filter: drop-shadow(0 -1px 0 var(--stone-800));
+
+                        &:hover {
+                            filter: drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.1));
+                        }
+
+                        &:active {
+                            transform: translateY(2px);
+                        }
+                    }
+                }
+            }
+        }
+
+        @keyframes star-rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dots {
+            0% {
+                background-position:
+                    0 0,
+                    4px 4px;
+            }
+
+            100% {
+                background-position:
+                    8px 0,
+                    12px 4px;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .button {
+
+                &:active,
+                &:focus-visible {
+                    outline-color: var(--yellow-400);
+                }
+            }
+        }
+
+
         @keyframes spin {
             0% {
                 transform: rotate(0deg);
@@ -204,10 +435,42 @@
             text-align: center;
             margin-top: 50px;
         }
+
+        .menu {
+            position: fixed;
+            display: none; 
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px; 
+            padding: 50px; 
+            border-radius: 20px;
+            background-color: black; 
+            z-index: 100;
+            
+        }
     </style>
 </head>
 
 <body>
+    <div class="menu" id="menu">
+        <button class="button" onclick="window.location.reload()">
+            <div>
+                <div>
+                    <div>Jogar Novamente</div>
+                </div>
+            </div>
+        </button>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog">
+        <button class="button">
+            <div>
+                <div>
+                    <div>Fazer Pré Inscrição</div>
+                </div>
+            </div>
+        </button>
+    </a>
+    </div>
     <div id="loading-screen">
         <div class="loader"></div>
     </div>
@@ -246,7 +509,7 @@
         let rodada = false;
         let playerTurn = null;
         let npcFala = null;
-       
+
         window.addEventListener('load', function () {
             npcFala = document.getElementById("chat-baloon")
             setTimeout(() => {
@@ -278,7 +541,7 @@
         function NPCaction(NPC, Player, Espaçop1, EspaçoNPC) {
 
             if (NPC.vida > 0 && Player.vida > 0) {
-                if (NPC.vida < 200){
+                if (NPC.vida < 200) {
                     document.getElementById('enemyBody').src = NPC.aparencia2
                     console.log(NPC.aparencia2);
                     const frases = [
@@ -292,61 +555,64 @@
                     npcFala.innerHTML = frases[indiceAleatorio];
                 } else {
                     if (NPC.vida > Player.vida) {
-                    const frases = [
-                        "HAHAHAHA, Você é horrível!",
-                        "A vitória se aproxima de Dio!",
-                        "Eu vou te derrotar em breve!"
-                    ];
-                    setTimeout(() => {
+                        const frases = [
+                            "HAHAHAHA, Você é horrível!",
+                            "A vitória se aproxima de Dio!",
+                            "Eu vou te derrotar em breve!"
+                        ];
+                        setTimeout(() => {
+                            const indiceAleatorio = Math.floor(Math.random() * frases.length);
+
+                            npcFala.innerHTML = frases[indiceAleatorio];
+                            if (playerTurn == true && EspaçoNPC == null) {
+                                npcFala.innerHTML = "Vamos, jogue!";
+                            } else if (playerTurn == true && EspaçoNPC != null) {
+                                npcFala.innerHTML = "Vamos, é sua vez!";
+                            }
+
+                        }, 2000);
+                    } else if (NPC.vida < Player.vida) {
+                        const frases = [
+                            "Droga.. Estou perdendo!",
+                            "A vitória parece distante.",
+                            "Que bela jogada..."
+                        ];
                         const indiceAleatorio = Math.floor(Math.random() * frases.length);
-
                         npcFala.innerHTML = frases[indiceAleatorio];
-                        if (playerTurn == true && EspaçoNPC == null) {
-                            npcFala.innerHTML = "Vamos, jogue!";
-                        } else if (playerTurn == true && EspaçoNPC != null) {
-                            npcFala.innerHTML = "Vamos, é sua vez!";
-                        }
+                        setTimeout(() => {
+                            if (playerTurn == true && EspaçoNPC == null) {
+                                npcFala.innerHTML = "Vamos, Jogue! seu Lixo!";
+                            } else if (playerTurn == true && EspaçoNPC != null) {
+                                npcFala.innerHTML = "Vamos, é sua vez, HORRIVEL!";
+                            }
 
-                    }, 2000);
-                } else if (NPC.vida < Player.vida) {
-                    const frases = [
-                        "Droga.. Estou perdendo!",
-                        "A vitória parece distante.",
-                        "Que bela jogada..."
-                    ];
-                    const indiceAleatorio = Math.floor(Math.random() * frases.length);
-                    npcFala.innerHTML = frases[indiceAleatorio];
-                    setTimeout(() => {
-                        if (playerTurn == true && EspaçoNPC == null) {
-                            npcFala.innerHTML = "Vamos, Jogue! seu Lixo!";
-                        } else if (playerTurn == true && EspaçoNPC != null) {
-                            npcFala.innerHTML = "Vamos, é sua vez, HORRIVEL!";
-                        }
+                        }, 4000);
+                    } else {
+                        const frases = [
+                            "Nada mal..",
+                            "Você não é tão ruim!",
+                            "Sorte de Principiante."
+                        ];
+                        const indiceAleatorio = Math.floor(Math.random() * frases.length);
+                        npcFala.innerHTML = frases[indiceAleatorio];
+                        setTimeout(() => {
+                            if (playerTurn == true && EspaçoNPC == null) {
+                                npcFala.innerHTML = "Vamos, jogue!";
+                            } else if (playerTurn == true && EspaçoNPC != null) {
+                                npcFala.innerHTML = "Vamos, é sua vez!";
+                            }
+                        }, 4000);
+                    }
+                }
 
-                    }, 4000);
-                } else {
-                    const frases = [
-                        "Nada mal..",
-                        "Você não é tão ruim!",
-                        "Sorte de Principiante."
-                    ];
-                    const indiceAleatorio = Math.floor(Math.random() * frases.length);
-                    npcFala.innerHTML = frases[indiceAleatorio];
-                    setTimeout(() => {
-                        if (playerTurn == true && EspaçoNPC == null) {
-                            npcFala.innerHTML = "Vamos, jogue!";
-                        } else if (playerTurn == true && EspaçoNPC != null) {
-                            npcFala.innerHTML = "Vamos, é sua vez!";
-                        }
-                    }, 4000);
-                }
-                }
-                
             } else {
                 endBattle = true;
+                setTimeout(() => {
+                    document.getElementById("menu").style.display = "flex";
+                }, 2000);
             }
             if (Player.vida <= 0 && NPC.vida <= 0) {
-                
+
                 if (playerTurn) {
                     const frases = [
                         "HAHAHAHA, perdedor!",
@@ -467,7 +733,7 @@
                         console.log("vida tirada")
                         console.log(p2.envenenado.dano);
                     }
-                    
+
                 }
 
 
@@ -557,33 +823,33 @@
                         let i = 2;
                         setInterval(() => {
                             console.log(playerTurn + " " + CartaNPC)
-                            if (endBattle == false){
-                            if (playerTurn == false && CartaNPC == null) {
-                                playerTurn = true;
-                                setTimeout(() => {
-                                    if (players.Dio.vida >= 200) {
-                                        CartaNPC = players.Dio.cartas[i];
-                                        console.log(players.Dio.cartas[i]);
-                                        if (i < 4) {
-                                            i++
+                            if (endBattle == false) {
+                                if (playerTurn == false && CartaNPC == null) {
+                                    playerTurn = true;
+                                    setTimeout(() => {
+                                        if (players.Dio.vida >= 200) {
+                                            CartaNPC = players.Dio.cartas[i];
+                                            console.log(players.Dio.cartas[i]);
+                                            if (i < 4) {
+                                                i++
+                                            } else {
+                                                i = 2;
+                                            }
                                         } else {
-                                            i = 2;
-                                        }
-                                    } else {
-                                        
-                                        if (i < 4) {
-                                            i++
-                                        } else {
-                                            i = 0;
-                                        }
-                                        CartaNPC = players.Dio.cartas[i];
-                                        console.log(players.Dio.cartas[i]);
-                                    }
-                                    console.log(i);
-                                    console.log(CartaNPC)
 
-                                    document.getElementById('card-npc').innerHTML = "";
-                                    document.getElementById('card-npc').innerHTML = `
+                                            if (i < 4) {
+                                                i++
+                                            } else {
+                                                i = 0;
+                                            }
+                                            CartaNPC = players.Dio.cartas[i];
+                                            console.log(players.Dio.cartas[i]);
+                                        }
+                                        console.log(i);
+                                        console.log(CartaNPC)
+
+                                        document.getElementById('card-npc').innerHTML = "";
+                                        document.getElementById('card-npc').innerHTML = `
                                         <div id="sub-card-npc" style=" border: 1px solid white; border-radius: 5px ;background: url(card3.jpg); background-size: cover; background-position: center; opacity: 0; transition: 1s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
                                         <div style="height: 45%; width: 90%; background-image: url(${CartaNPC.desc}); border: 1px solid white; border-radius: 5px; background-size: cover; background-position: center;"></div>
                                         <div style="height: 50%; width: 100%; background: rgba(0, 0, 0, 0.5); margin-left: 5px; margin-right: 5px; color: white;">
@@ -593,16 +859,17 @@
                                         ${CartaNPC.custoEnergia !== undefined && CartaNPC.custoEnergia > 0 && CartaNPC.custoEnergia ? `<p style="font-size: 12px; margin: 1px">${CartaNPC.custoEnergia}%⚡</p>` : ``}   
                                         </div>
                                     `
-                                    setTimeout(() => {
-                                        document.getElementById('sub-card-npc').style.opacity = 1;
-                                    }, 500);
+                                        setTimeout(() => {
+                                            document.getElementById('sub-card-npc').style.opacity = 1;
+                                        }, 500);
 
 
-                                }, 1000);
+                                    }, 1000);
 
 
-                            }}
-                        
+                                }
+                            }
+
                         }, 2000);
                         setInterval(() => {
 
@@ -719,9 +986,9 @@
                                             if (movedDistance >= 150) {
 
                                                 setTimeout(() => {
-                                                    document.getElementById('cartas-container').style.top = "90%"; 
+                                                    document.getElementById('cartas-container').style.top = "90%";
                                                 }, 1000);
-                                                
+
                                                 cartaElemento.style.position = 'fixed';
                                                 cartaElemento.style.left = "5%";
                                                 cartaElemento.style.opacity = "0";
@@ -778,9 +1045,9 @@
             }
         }
 
-        // top =
+        // endGame
         ;
     </script>
 </body>
 
-</html>
+</html> 
