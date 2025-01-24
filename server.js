@@ -91,8 +91,8 @@ const c10 = new Carta("10", `💨-❨❨⚔️•'Golpe Veloz'•⚔️❩❩-�
   Um ataque ágil e preciso, perfeito para desgastar o inimigo rapidamente, mas sem causar danos extremos.
   \n➖Esse É Um Golpe Moderado Focado Em Agilidade.`, "https://i.pinimg.com/736x/75/5b/40/755b40649a49ae583ed65917ce7bd4fb.jpg");
 const c11 = new Carta("11", `🌁-❨❨👩🏻•'Fúria do Oceano'•👩🏻❩❩-🌁
-    『オーシャンフューリー, Ōshanfu~yūrī』`, `ataque`, -30, -50, 
-`Dano:『50%💔』. Custo De Energia:『-30%⚡』.  
+    『オーシャンフューリー, Ōshanfu~yūrī』`, `ataque`, -90, -120, 
+`Dano:『120%💔』. Custo De Energia:『-90%⚡』.  
 O usuário dessa habilidade usa da Magia aquática para causar danos severos à quem for atingido.  
 \n➖Essa É Uma Habilidade Ofensiva Avançada.`, 'https://i.pinimg.com/736x/c3/54/b4/c354b49cb8b3923cdd768e17a7f194b7.jpg');
   const Dio = new NPC(`Dio`, [c1, c2, c3, c4, c7], 300, 300, `https://www.pngall.com/wp-content/uploads/14/Dio-PNG-Images.png`, `https://www.pngarts.com/files/10/Dio-PNG-High-Quality-Image.png`)
