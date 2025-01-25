@@ -494,7 +494,7 @@
         </div>
     </div>
     <div id="cartas-container">
-        <!-- Cartas serão carregadas aqui -->
+        <!-- data-id -->
     </div>
 
     <script>
@@ -820,7 +820,7 @@
                         console.log(players);
                         const container = document.getElementById('cartas-container');
                         container.innerHTML = ''; // Limpa o conteúdo atual
-                        let i = 2;
+                        let i = 3;
                         setInterval(() => {
                             console.log(playerTurn + " " + CartaNPC)
                             if (endBattle == false) {
@@ -830,17 +830,17 @@
                                         if (players.Dio.vida >= 200) {
                                             CartaNPC = players.Dio.cartas[i];
                                             console.log(players.Dio.cartas[i]);
-                                            if (i < 4) {
+                                            if (i < 6) {
                                                 i++
                                             } else {
-                                                i = 2;
+                                                i = 3;
                                             }
                                         } else {
 
-                                            if (i < 4) {
+                                            if (i < 6) {
                                                 i++
                                             } else {
-                                                i = 0;
+                                                i = 1;
                                             }
                                             CartaNPC = players.Dio.cartas[i];
                                             console.log(players.Dio.cartas[i]);
@@ -1045,7 +1045,7 @@
             }
         }
 
-        // endGame
+        // i = 0 
         ;
     </script>
 </body>
