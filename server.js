@@ -65,11 +65,11 @@ const c1 = new Carta( `🌁-❨❨👩🏻•'Cogumelos Envenenados'•👩🏻�
 \n➖Esse Envenenamento É Uma Habilidade Básica.`, `https://i.pinimg.com/736x/7f/c1/03/7fc103be42d9e05d6f44448361357f7f.jpg`)
 const c2 = new Carta( `🌁-((👩🏻•'Regeneração Real'•👩🏻))-🌁
          『本当の再生; Hontō no Saisei』`, 'ativada', 50, 50, `Regenera:『+50%⚡』De Energia.
-Regenera:『+50%❤️』De Vida. A realeza do novo mundo aguarda ansiosamente por batalhas. Uma das razões para isso é que eles tem técnicas secretas nunca antes vistas e querem testa-las em seus inimigos. Regenerar é uma de suas muitas habilidades.`, 'https://i.pinimg.com/736x/0a/75/7a/0a757a7ee46881d6a071add7eb8400fa.jpg')
+Regenera:『+50%❤️』De Vida. A realeza do novo mundo aguarda ansiosamente por batalhas. Uma das razões para isso é que eles tem técnicas secretas nunca antes vistas e querem testa-las em seus inimigos. Regenerar é uma de suas muitas habilidades.`, 'https://i.pinimg.com/736x/52/00/ef/5200ef1700b8e5f7ec8d9fa92fbd77d3.jpg')
 const c3 = new Carta( `⏺️-❨❨🌁•'Arremesso De Lâminas'•🌁❩❩-⏺️
     『ブレード投げ , Burēdo nage』 `, 'ataque', -80, -130, `
 Dano:『130%💔』. Custo De Energia:『-80%⚡』. Assim como na sua técnica corporal, os navegadores usam a força do corpo, mas dessa vez aliada a pontaria e sorte para acertar o adversário com suas lâminas. Eles miram e jogam, tudo friamente calculado, caso acerte também pode matar.
-\n➖Esse É Um Golpe Básico À Distância.`, `https://i.pinimg.com/736x/0f/1c/71/0f1c7198564902495452cdfa8c4feff4.jpg`)
+\n➖Esse É Um Golpe Básico À Distância.`, `https://i.pinimg.com/736x/19/84/c1/1984c130e6d7b14598893354c679234f.jpg`)
 const c4 = new Carta( `⏺️-❨❨🌁•'Mil Coordenadas'•🌁❩❩-⏺️
      『千の座標, Sen no zahyō』 `, `defesa`, -50, 0, `Custo De Energia:『-50%⚡』. Com esta técnica o usuário usa de sua inteligência para criar várias pistas falsas de sua localização, fazendo o seu oponente seguir caminhos diferentes, e com isso criando tempo suficiente para se ocultar de qualquer ameaça ou até mesmo tomar um cházinho.
 \n ➖Esse Movimento É Uma Ocultação Básica.`, `https://i.pinimg.com/736x/ad/3d/19/ad3d19ef9ea0aa71555b6ee86afdf068.jpg`)
@@ -77,12 +77,12 @@ const c5 = new Carta( `🌋-❨❨👊🏻•'Impacto Devastador'•👊🏻❩�
   『破壊的な衝撃, Hakai-teki na Shōgeki』`, 'ataque', -60, -90, `
   Dano:『90%💔』. Custo De Energia:『-60%⚡』. 
   Os guerreiros do novo mundo canalizam sua força em um golpe poderoso, causando grande impacto, mas com alto custo de energia.
-  \n➖Esse É Um Golpe De Alto Risco E Alta Recompensa.`, "https://i.pinimg.com/736x/c2/01/99/c20199144f919690a698292d35b09ba5.jpg");
+  \n➖Esse É Um Golpe De Alto Risco E Alta Recompensa.`, "https://i.pinimg.com/736x/2a/85/1c/2a851cb0287a0df68eb6b38acb3f66b0.jpg");
 const c6 = new Carta( `🛡️-❨❨⚙️•'Escudo do Dragão'•⚙️❩❩-🛡️
   『鉄の盾, Tetsu no Tate』`, 'defesa', -50, 0, `
   Custo De Energia:『-50%⚡』. 
   Um escudo reforçado que reduz os danos recebidos, mas consome energia considerável ao ser ativado. Ideal para momentos críticos de defesa.
-  \n➖Essa Defesa É Moderada, Mas Custa Energia.`, "https://i.pinimg.com/736x/9a/6f/1e/9a6f1e692a39773cb68a4ce9dca5f1f7.jpg");
+  \n➖Essa Defesa É Moderada, Mas Custa Energia.`, "https://d1367e0dd39482f5e6.gradio.live/file=/tmp/fooocus/9078ae23e5f72ac0364beca0e2cc055a9f8c150f/2025-01-27_03-06-43_9138.png");
 const c7 = new Carta( `💨-❨❨⚔️•'Golpe Veloz'•⚔️❩❩-💨
   『速攻の一撃, Sokkō no Ichigeki』`, 'ataque', -40, -80, `
   Dano:『80%💔』. Custo De Energia:『-40%⚡』. 
@@ -106,7 +106,7 @@ O usuário dessa habilidade usa da Magia aquática para causar danos severos à 
 const c11 = new Carta( `🌁-❨❨•'The World'•❩❩-🌁
     『ザ・ワールド, Za wārudo』`, `defesa`, -50, 0, `Custo De Energia:『-90%⚡』. O usuário dessa carta Pausa o tempo por 5 segundos, impedindo seu adversário de ataca-lo.`, `https://i.pinimg.com/736x/d5/c4/38/d5c4389ae16d0ead7c84b94318e649c4.jpg`)
 const Dio = new NPC(`Dio`, [c1, c11, c2, c3, c4, c7], 300, 300, `https://www.pngall.com/wp-content/uploads/14/Dio-PNG-Images.png`, `https://www.pngarts.com/files/10/Dio-PNG-High-Quality-Image.png`)
-const Player = new NPC(`Jogador`, [c5, c2, c6, c7, c8, c9, c10, c6], 300, 300, `https://dl.bc.cdn.garenanow.com/bcm/br/img/character/character_a1.png`)
+const Player = new NPC(`Jogador`, [c5, c2, c6, c7, c8, c9, c10, c6, c7], 300, 300, `https://dl.bc.cdn.garenanow.com/bcm/br/img/character/character_a1.png`)
 Dio.cartas = Dio.cartas.map(carta => carta.clone());
 Player.cartas = Player.cartas.map(carta => carta.clone());
 
