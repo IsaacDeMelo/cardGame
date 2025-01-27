@@ -7,6 +7,7 @@
     <title>Document</title>
     <style>
         body {
+            overflow: hidden;
             box-sizing: border-box;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             box-sizing: border-box;
@@ -48,7 +49,8 @@
         }
 
         .campo-de-batalha {
-            border: 10px solid black; 
+            border-top: 10px solid black; 
+            border-bottom: 10px solid black; 
             width: 100%;
             height: 55vh;
             background: url(https://i.etsystatic.com/18388031/r/il/5d898f/3983787500/il_fullxfull.3983787500_eebf.jpg);
@@ -62,17 +64,18 @@
 
             .atributosNPC {
                 position: absolute;
-                width: 100px;
-                height: 100px;
-                background-color: rgba(0, 0, 0, 0.5);
-                color: white;
+                padding: 10px; 
+
+                background-color: black;
+                color: green;
                 left: 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
+                border-top:5px solid white; 
+                border-right: 5px solid rgb(194, 194, 194); 
+                border-bottom: 5px solid gray; 
                 font-family: Arial, Helvetica, sans-serif;
 
                 p {
@@ -82,22 +85,23 @@
 
             .atributosPlayer {
                 position: absolute;
-                font-family: Arial, Helvetica, sans-serif;
-                width: 100px;
-                height: 100px;
-                background-color: rgba(0, 0, 0, 0.5);
-                color: white;
+                padding: 10px; 
+                width: 70px; 
+                background-color: black;
+                color: green;
                 right: 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                border-top-left-radius: 10px;
-                border-bottom-left-radius: 10px;
-            }
+                border-top:5px solid white; 
+                border-left: 5px solid rgb(194, 194, 194); 
+                border-bottom: 5px solid gray; 
+                font-family: Arial, Helvetica, sans-serif;
 
-            p {
-                margin: 0px;
+                p {
+                    margin: 0px;
+                }
             }
         }
 
@@ -105,7 +109,7 @@
             width: 100%;
             height: 30vh;
             display: flex;
-            background: url(https://t4.ftcdn.net/jpg/08/36/75/09/360_F_836750955_LVolMx61cAuIFVBbY2ttnR9msbCvkWFv.jpg);
+            background: url(https://i.pinimg.com/736x/cc/71/6d/cc716da5427b999ca61a0f5af5457bbb.jpg);
             background-size: cover;
             background-position: top;
 
@@ -488,11 +492,11 @@
     <div id="campo-de-batalha" class="campo-de-batalha">
         <div class="atributosPlayer" id="atributosPlayer"></div>
         <div class="atributosNPC" id="atributosNPC"></div>
-        <div id="card-npc" style="width: 75px; height: 100px; background-color: rgba(0, 0, 0, 0.5);">
+        <div id="card-npc" style="width: 80px; border-radius: 5px; border: 2px solid black; height: 130px; background-color: rgba(0, 0, 0, 0.5);">
 
         </div>
         <div id="card-player"
-            style="width: 75px; height: 100px; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            style="width: 80px; height: 130px; border-radius: 5px; border: 2px solid black; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; flex-direction: column;">
 
         </div>
     </div>
@@ -859,8 +863,8 @@
 
                                         document.getElementById('card-npc').innerHTML = "";
                                         document.getElementById('card-npc').innerHTML = `
-                                        <div id="sub-card-npc" style=" border: 1px solid white; border-radius: 5px ;background: url(card3.jpg); background-size: cover; background-position: center; opacity: 0; transition: 1s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                                        <div style="height: 45%; width: 90%; background-image: url(${CartaNPC.desc}); border: 1px solid white; border-radius: 5px; background-size: cover; background-position: center;"></div>
+                                        <div id="sub-card-npc" style=" border-radius: 5px ;background: url(card3.jpg); background-size: cover; background-position: center; opacity: 0; transition: 1s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                                        <div style="height: 45%; width: 90%; background-image: url(${CartaNPC.desc}); border: 1px solid black; border-radius: 5px; background-size: cover; background-position: center;"></div>
                                         <div style="height: 50%; width: 100%; background: rgba(0, 0, 0, 0.5); margin-left: 5px; margin-right: 5px; color: white;">
                                         ${CartaNPC.dano !== undefined && CartaNPC.dano < 0 && CartaNPC.dano ? `<p style="font-size: 12px; margin: 1px">${CartaNPC.dano}%💔</p>` : ``}
                                         ${CartaNPC.dano !== undefined && CartaNPC.dano > 0 && CartaNPC.dano ? `<p style="font-size: 12px; margin: 1px">${CartaNPC.dano}%❤️</p>` : ``} 
@@ -932,14 +936,16 @@
                                 players.Dio.energia = 0;
                             }
                             const statusNPC = document.getElementById('atributosNPC');
-                            statusNPC.innerHTML = `<h4 style="margin: 5px;">${players.Dio.nome}</h4>
-                                                <p>${vidaNPC}❤️</p>
-                                                <p>${energiaNPC}⚡</p>`
+                            statusNPC.innerHTML = `<h4 style="margin: 5px;"><code>${players.Dio.nome}</code></h4>
+                                                <p><code>${vidaNPC}❤️</code></p>
+                                                <p><code>${energiaNPC}</code>⚡</p>
+                                                <code>-------</code>
+                                                <h4 style="margin: 5px;"><code>${players.Player.nome}</code></h4>
+                                                <p><code>${vidaPlayer}❤️</code></p>
+                                                <p><code>${energiaPlayer}⚡</code></p>
+                                                `
 
-                            const statusPlayer = document.getElementById('atributosPlayer');
-                            statusPlayer.innerHTML = `<h4 style="margin: 5px;">${players.Player.nome}</h4>
-                                                <p>${vidaPlayer}❤️</p>
-                                                <p>${energiaPlayer}⚡</p>`
+                            
                         }, 10);
 
                         // Adiciona cada carta ao container
@@ -962,7 +968,7 @@
                             cartaDiv.setAttribute('data-id', carta.id);
                             cartaDiv.innerHTML = `
                             <div class="shadowCard" style="border-radius: 10px; border: 2px solid black; color: white; background: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; flex-direction: column">
-                            <div class="cardIMG" style="border-radius: 10px; border: 2px solid white; width: 100%; height: 300px; background: url('${carta.desc}'); background-size: cover; background-position: center;"></div>
+                            <div class="cardIMG" style="border-radius: 10px; border: 2px solid white; width: 100%; height: 200px; background: url('${carta.desc}'); background-size: cover; background-position: center;"></div>
                             <div style="padding: 10px">
                             <pre style="font-size: 12px; text-align: center;">${carta.nome}</pre>
             ${carta.modelo ? `<p style="font-size: 11px;">${carta.modelo}</p>` : ''}
@@ -1019,8 +1025,8 @@
                                                     if (carta.id == dataId) {
                                                         document.getElementById('card-player').innerHTML = "";
                                                         document.getElementById('card-player').innerHTML = `
-    <div id="sub-card-player" style="border: 1px solid white; border-radius: 5px ;background: url(card3.jpg); background-size: cover; background-position: center; opacity: 0; transition: 1s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-    <div style="height: 45%; width: 90%; background-image: url(${carta.desc}); background-size: cover; background-position: center; border: 1px solid white; border-radius: 5px;"></div>
+    <div id="sub-card-player" style="border-radius: 5px ;background: url(card3.jpg); background-size: cover; background-position: center; opacity: 0; transition: 1s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <div style="height: 45%; width: 90%; background-image: url(${carta.desc}); background-size: cover; background-position: center; border: 1px solid black; border-radius: 5px;"></div>
     <div style="height: 50%; width: 100%;  background: rgba(0, 0, 0, 0.5); margin-left: 5px; margin-right: 5px; color: white;">
     ${carta.dano !== undefined && carta.dano < 0 && carta.dano ? `<p style="font-size: 12px; margin: 1px">${carta.dano}%💔</p>` : ``}
     ${carta.dano !== undefined && carta.dano > 0 && carta.dano ? `<p style="font-size: 12px; margin: 1px">${carta.dano}%❤️</p>` : ``} 
@@ -1054,7 +1060,7 @@
             }
         }
 
-        // i = 0 
+        // card-npc
         ;
     </script>
 </body>

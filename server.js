@@ -82,7 +82,7 @@ const c6 = new Carta( `🛡️-❨❨⚙️•'Escudo do Dragão'•⚙️❩❩
   『鉄の盾, Tetsu no Tate』`, 'defesa', -50, 0, `
   Custo De Energia:『-50%⚡』. 
   Um escudo reforçado que reduz os danos recebidos, mas consome energia considerável ao ser ativado. Ideal para momentos críticos de defesa.
-  \n➖Essa Defesa É Moderada, Mas Custa Energia.`, "https://d1367e0dd39482f5e6.gradio.live/file=/tmp/fooocus/9078ae23e5f72ac0364beca0e2cc055a9f8c150f/2025-01-27_03-06-43_9138.png");
+  \n➖Essa Defesa É Moderada, Mas Custa Energia.`, "https://i.pinimg.com/736x/bd/24/d7/bd24d75a6ce216eb4d0c24a9879083fc.jpg");
 const c7 = new Carta( `💨-❨❨⚔️•'Golpe Veloz'•⚔️❩❩-💨
   『速攻の一撃, Sokkō no Ichigeki』`, 'ataque', -40, -80, `
   Dano:『80%💔』. Custo De Energia:『-40%⚡』. 
