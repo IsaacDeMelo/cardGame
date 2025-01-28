@@ -67,8 +67,8 @@ const c2 = new Carta( `🌁-((👩🏻•'Regeneração Real'•👩🏻))-🌁
          『本当の再生; Hontō no Saisei』`, 'ativada', 50, 50, `Regenera:『+50%⚡』De Energia.
 Regenera:『+50%❤️』De Vida. A realeza do novo mundo aguarda ansiosamente por batalhas. Uma das razões para isso é que eles tem técnicas secretas nunca antes vistas e querem testa-las em seus inimigos. Regenerar é uma de suas muitas habilidades.`, 'https://i.pinimg.com/736x/52/00/ef/5200ef1700b8e5f7ec8d9fa92fbd77d3.jpg')
 const c3 = new Carta( `⏺️-❨❨🌁•'Arremesso De Lâminas'•🌁❩❩-⏺️
-    『ブレード投げ , Burēdo nage』 `, 'ataque', -80, -130, `
-Dano:『130%💔』. Custo De Energia:『-80%⚡』. Assim como na sua técnica corporal, os navegadores usam a força do corpo, mas dessa vez aliada a pontaria e sorte para acertar o adversário com suas lâminas. Eles miram e jogam, tudo friamente calculado, caso acerte também pode matar.
+    『ブレード投げ , Burēdo nage』 `, 'ataque', -70, -110, `
+Dano:『110%💔』. Custo De Energia:『-70%⚡』. Assim como na sua técnica corporal, os navegadores usam a força do corpo, mas dessa vez aliada a pontaria e sorte para acertar o adversário com suas lâminas. Eles miram e jogam, tudo friamente calculado, caso acerte também pode matar.
 \n➖Esse É Um Golpe Básico À Distância.`, `https://i.pinimg.com/736x/19/84/c1/1984c130e6d7b14598893354c679234f.jpg`)
 const c4 = new Carta( `⏺️-❨❨🌁•'Mil Coordenadas'•🌁❩❩-⏺️
      『千の座標, Sen no zahyō』 `, `defesa`, -50, 0, `Custo De Energia:『-50%⚡』. Com esta técnica o usuário usa de sua inteligência para criar várias pistas falsas de sua localização, fazendo o seu oponente seguir caminhos diferentes, e com isso criando tempo suficiente para se ocultar de qualquer ameaça ou até mesmo tomar um cházinho.
@@ -103,8 +103,7 @@ const c10 = new Carta( `🌁-❨❨👩🏻•'Fúria do Oceano'•👩🏻❩�
   `Dano:『120%💔』. Custo De Energia:『-90%⚡』.  
 O usuário dessa habilidade usa da Magia aquática para causar danos severos à quem for atingido.  
 \n➖Essa É Uma Habilidade Ofensiva Avançada.`, 'https://i.pinimg.com/736x/c3/54/b4/c354b49cb8b3923cdd768e17a7f194b7.jpg');
-const c11 = new Carta( `🌁-❨❨•'The World'•❩❩-🌁
-    『ザ・ワールド, Za wārudo』`, `defesa`, -50, 0, `Custo De Energia:『-90%⚡』. O usuário dessa carta Pausa o tempo por 5 segundos, impedindo seu adversário de ataca-lo.`, `https://i.pinimg.com/736x/d5/c4/38/d5c4389ae16d0ead7c84b94318e649c4.jpg`)
+const c11 = new Carta( `🌁-❨❨•'The World'•❩❩-🌁『ザ・ワールド, Za wārudo』`, `defesa`, -50, 0, `Custo De Energia:『-90%⚡』. O usuário dessa carta Pausa o tempo por 5 segundos, impedindo seu adversário de ataca-lo.`, `https://i.pinimg.com/736x/d5/c4/38/d5c4389ae16d0ead7c84b94318e649c4.jpg`)
 const Dio = new NPC(`Dio`, [c1, c11, c2, c3, c4, c7], 300, 300, `https://www.pngall.com/wp-content/uploads/14/Dio-PNG-Images.png`, `https://www.pngarts.com/files/10/Dio-PNG-High-Quality-Image.png`)
 const Player = new NPC(`Jogador`, [c5, c2, c6, c7, c8, c9, c10, c6, c7], 300, 300, `https://dl.bc.cdn.garenanow.com/bcm/br/img/character/character_a1.png`)
 Dio.cartas = Dio.cartas.map(carta => carta.clone());

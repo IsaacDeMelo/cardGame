@@ -12,10 +12,7 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             box-sizing: border-box;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+
             background: url(https://i.pinimg.com/736x/cc/71/6d/cc716da5427b999ca61a0f5af5457bbb.jpg);
             background-size: contain;
             background-position: top;
@@ -49,8 +46,8 @@
         }
 
         .campo-de-batalha {
-            border-top: 10px solid black; 
-            border-bottom: 10px solid black; 
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
             width: 100%;
             height: 55vh;
             background: url(https://i.etsystatic.com/18388031/r/il/5d898f/3983787500/il_fullxfull.3983787500_eebf.jpg);
@@ -64,8 +61,7 @@
 
             .atributosNPC {
                 position: absolute;
-                padding: 10px; 
-
+                padding: 10px;
                 background-color: black;
                 color: green;
                 left: 0;
@@ -73,30 +69,11 @@
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                border-top:5px solid white; 
-                border-right: 5px solid rgb(194, 194, 194); 
-                border-bottom: 5px solid gray; 
-                font-family: Arial, Helvetica, sans-serif;
-
-                p {
-                    margin: 0px;
-                }
-            }
-
-            .atributosPlayer {
-                position: absolute;
-                padding: 10px; 
-                width: 70px; 
-                background-color: black;
-                color: green;
-                right: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                border-top:5px solid white; 
-                border-left: 5px solid rgb(194, 194, 194); 
-                border-bottom: 5px solid gray; 
+                border-top: 5px solid white;
+                border-right: 5px solid rgb(194, 194, 194);
+                border-left: 5px solid rgb(194, 194, 194);
+                border-radius: 10px;
+                border-bottom: 5px solid gray;
                 font-family: Arial, Helvetica, sans-serif;
 
                 p {
@@ -181,7 +158,7 @@
             width: 100vw;
             height: 100vh;
             background-color: black;
-            background-image: url(https://imgs.search.brave.com/2ZkyuICdMZ3A-BC0iJGil04JxgAZ_Az7LFXE-MhU97U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jNC53/YWxscGFwZXJmbGFy/ZS5jb20vd2FsbHBh/cGVyLzU1OS8yMzMv/MTM0L2JsYWNrLWFz/dGEtYmxhY2stY2xv/dmVyLWtpbWV0c3Ut/bm8teWFpYmEta2F0/YW5hLXN3b3JkYXJ0/b25saW5lLWhkLXdh/bGxwYXBlci1wcmV2/aWV3LmpwZw);
+            background-image: url(loading.jpg);
             background-size: cover;
             background-position: center;
             display: flex;
@@ -443,24 +420,41 @@
         }
 
         .menu {
-            position: fixed;
-            display: none;
+            position: absolute;
+            display: flex;
+            opacity: 1;
+            transition: 2s all linear;
+            width: 100%;
+            height: 100%;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            gap: 20px;
-            padding: 50px;
             border-radius: 20px;
-            background-color: black;
-            z-index: 100;
+            z-index: 99;
 
+            button {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                padding: 10px;
+                margin: 10px;
+                border-radius: 5px;
+                font-weight: bold;
+                color: #292524;
+                border: 2px solid white; 
+                background-color: rgb(253, 253, 131);
+
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="menu" id="menu">
-        <button class="button" onclick="window.location.reload()">
+
+        <img class="image" src="https://dl.bc.cdn.garenanow.com/bcm/na/img/character/character_a3.png" width="100%">
+        <div class=""
+            style="font-size: 11px; font-weight: 200; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 20px; box-sizing: border-box; border-top: 5px solid rgb(22, 22, 22);  width: 100%;height: 60%; background-color: rgb(31, 31, 31); color: rgb(253, 253, 131);"
+            id="silvaSpeak"></div>
+        <!-- <button class="button" onclick="window.location.reload()">
             <div>
                 <div>
                     <div>Jogar Novamente</div>
@@ -476,89 +470,117 @@
                     </div>
                 </div>
             </button>
-        </a>
+        </a> -->
+
     </div>
     <div id="loading-screen">
         <div class="loader"></div>
     </div>
-    <div class="enemy">
-        <shadow>
-            <div class="chat-baloon" id="chat-baloon">. . . . . . . . </div>
-            <div style="height: 100%; display: flex; ">
-                <img id="enemyBody" class="enemyBody" src="<%=Dio.aparencia%>" width="150px;">
+    <div id="gameContainer" style="transition: 3s all; filter: blur(7px)">
+        <div class="enemy">
+            <shadow>
+                <div class="chat-baloon" id="chat-baloon">. . . . . . . . </div>
+                <div style="height: 100%; display: flex; ">
+                    <img id="enemyBody" class="enemyBody" src="<%=Dio.aparencia%>" width="150px;">
+                </div>
+            </shadow>
+        </div>
+        <div id="campo-de-batalha" class="campo-de-batalha">
+            <div class="atributosPlayer" id="atributosPlayer"></div>
+            <div class="atributosNPC" id="atributosNPC"></div>
+            <div id="card-npc"
+                style="width: 80px; border-radius: 5px; border: 2px solid black; height: 130px; background-color: rgba(0, 0, 0, 0.5);">
+
             </div>
-        </shadow>
-    </div>
-    <div id="campo-de-batalha" class="campo-de-batalha">
-        <div class="atributosPlayer" id="atributosPlayer"></div>
-        <div class="atributosNPC" id="atributosNPC"></div>
-        <div id="card-npc" style="width: 80px; border-radius: 5px; border: 2px solid black; height: 130px; background-color: rgba(0, 0, 0, 0.5);">
+            <div id="card-player"
+                style="width: 80px; height: 130px; border-radius: 5px; border: 2px solid black; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; flex-direction: column;">
 
+            </div>
         </div>
-        <div id="card-player"
-            style="width: 80px; height: 130px; border-radius: 5px; border: 2px solid black; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; flex-direction: column;">
-
+        <div id="cartas-container">
+            <!-- data-id -->
         </div>
-    </div>
-    <div id="cartas-container">
-        <!-- data-id -->
     </div>
 
     <script>
         let endBattle = false;
-        window.addEventListener('wheel', function (event) {
-            // Verifica se a rolagem é vertical (para cima/baixo)
-            if (event.deltaY !== 0) {
-                // Se o scroll for vertical (Y), impede o comportamento de recarregar
-                event.preventDefault();
-            }
-        }, { passive: false });
+        let playerwin;
         let rodada = false;
         let playerTurn = null;
         let npcFala = null;
+        function nextStep() {
+            document.getElementById('menu').style.opacity = 0;
+            document.getElementById('gameContainer').style.filter = "none";
+            setTimeout(() => {
+                document.getElementById('silvaSpeak').innerHTML = "";
+                document.getElementById('menu').style.display = "none";
+            }, 2000);
+        }
+        function typingEffect(elementId, text, speed) {
+            const element = document.getElementById(elementId);
+            let i = 0;
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);  // Adiciona uma letra
+                    i++;
+                    setTimeout(type, speed);  // Chama a função novamente após o intervalo de tempo
+                }
+            }
+
+            type();
+        }
 
         window.addEventListener('load', function () {
             npcFala = document.getElementById("chat-baloon")
             setTimeout(() => {
-
                 // Esconde a tela de carregamento e mostra o conteúdo
-
                 var quemComeca = Math.random() < 0.5 ? "Sou Eu!" : "É Você";
-
                 // Atualiza o conteúdo do elemento com o ID "turno"
-
                 npcFala.innerHTML = "Quem começa jogando... " + quemComeca + "!";
-
                 if (quemComeca == "Sou Eu!") {
                     console.log(quemComeca)
                     playerTurn = false;
                 } else {
                     playerTurn = true;
                 }
-
             }, 1000);
             setTimeout(() => {
                 startBattle();
             }, 2000);
         });
 
+        
 
 
         function NPCaction(NPC, Player, Espaçop1, EspaçoNPC) {
 
             if (NPC.vida > 0 && Player.vida > 0) {
                 if (NPC.vida < 200) {
+
                     document.getElementById('enemyBody').src = NPC.aparencia2
+                    document.getElementById('enemyBody').style.width = "190px";
                     console.log(NPC.aparencia2);
                     const frases = [
                         "JOGUE! JOGUE! JOGUE!",
                         "Agora VOCÊ me irritou!",
                         "INUTIL! INUTIL! INUTIL!",
                         "NÃO ME FAÇA RIR",
-                        "É TUDO O QUE TEM?",
+                        "Estou cansado de você!",
+                        "Imundo! Suas cartas são fracas!",
+                        "É o seu fim!"
                     ];
                     const indiceAleatorio = Math.floor(Math.random() * frases.length);
                     npcFala.innerHTML = frases[indiceAleatorio];
+                    setTimeout(() => {
+
+                        if (playerTurn == true && EspaçoNPC == null) {
+                            npcFala.innerHTML = "Jogue, INUTIL!";
+                        } else if (playerTurn == true && EspaçoNPC != null) {
+                            npcFala.innerHTML = "Sua vez, INUTIL!";
+                        }
+
+                    }, 2000);
                 } else {
                     if (NPC.vida > Player.vida) {
                         const frases = [
@@ -615,11 +637,27 @@
                 endBattle = true;
                 setTimeout(() => {
                     document.getElementById("menu").style.display = "flex";
-                }, 2000);
+                    document.getElementById("gameContainer").style.filter = "blur(7px)"
+                    setTimeout(() => {
+                        document.getElementById("menu").style.opacity = 1;
+                        document.getElementById("silvaSpeak").innerHTML = " ";
+                        if (playerwin == true) {
+                            document.getElementById("silvaSpeak").innerHTML = `Você venceu, parabéns!!!! Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai adorar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!<div style="display:flex">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog"><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick="window.location.reload()">Quero jogar novamente!</button></div>`
+                            
+                            
+                        } else {
+                             document.getElementById("silvaSpeak").innerHTML = `Oh, parece que você perdeu desta vez. Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai adorar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!  <div style="display:flex">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog"><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick="window.location.reload()">Quero tentar novamente!</button></div>`
+                        }
+
+                    }, 1000);
+                }, 1000);
             }
             if (Player.vida <= 0 && NPC.vida <= 0) {
 
                 if (playerTurn) {
+                    playerwin = false;
                     const frases = [
                         "HAHAHAHA, perdedor!",
                         "A VITÓRIA É MINHA!",
@@ -631,10 +669,11 @@
                         npcFala.innerHTML = frases[indiceAleatorio];
                     });
                 } else {
+                    playerwin = true;
                     const frases = [
-                        "Oh, você venceu.",
-                        "Parabéns pela vitória!",
-                        "Foi um honra, vamos repetir!"
+                        "NÃAAAAO! VOCÊ VENCEU!",
+                        "VOCÊ ME VENCEU? COMO?!",
+                        "DROGA, FUI DERROTADO!"
                     ];
                     setTimeout(() => {
                         const indiceAleatorio = Math.floor(Math.random() * frases.length);
@@ -644,10 +683,11 @@
                 }
             }
             if (Player.vida > 0 && NPC.vida <= 0) {
+                playerwin = true
                 const frases = [
-                    "Oh, você venceu.",
-                    "Parabéns pela vitória!",
-                    "Foi um honra, vamos repetir!"
+                    "NÃAAAAO! VOCÊ VENCEU!",
+                    "VOCÊ ME VENCEU? COMO?!",
+                    "DROGA, FUI DERROTADO!"
                 ];
                 setTimeout(() => {
                     const indiceAleatorio = Math.floor(Math.random() * frases.length);
@@ -656,6 +696,7 @@
                 });
             }
             if (Player.vida <= 0 && NPC.vida > 0) {
+                playerwin = false
                 const frases = [
                     "HAHAHAHA, perdedor!",
                     "A VITÓRIA É MINHA!",
@@ -667,11 +708,10 @@
                     npcFala.innerHTML = frases[indiceAleatorio];
                 });
             }
+
         }
         function startBattle() {
             if (playerTurn != null) {
-
-
                 let CartaPlayer;
                 let CartaNPC;
                 let AtributosNPC;
@@ -679,15 +719,6 @@
                 let startY = 0;  // Armazena a posição inicial Y
                 let movedDistance = 0;  // Distância movida até agora
 
-                document.body.addEventListener('keydown', (e) => {
-                    if (CartaPlayer != null && CartaNPC != null) {
-                        turno(CartaPlayer, CartaNPC, AtributosPlayer, AtributosNPC)
-                        NPCaction(AtributosNPC, AtributosPlayer, CartaNPC, CartaPlayer)
-                        CartaPlayer = null;
-                        CartaNPC = null;
-                    }
-
-                })
                 setInterval(() => {
                     if (CartaPlayer != null && CartaNPC != null && rodada == false) {
                         rodada = true;
@@ -730,19 +761,12 @@
                 function danoFixoPorTurno(p, p2) {
                     if (p.envenenado.veneno == true) {
                         p.vida += p.envenenado.dano;
-                        console.log("vida tirada")
-                        console.log(p.envenenado.dano);
                     }
-
                     if (p2.envenenado.veneno == true) {
                         p2.vida += p2.envenenado.dano;
-                        console.log("vida tirada")
-                        console.log(p2.envenenado.dano);
                     }
 
                 }
-
-
 
                 function turno(cartaP1, cartaNPC, P1, NPC) {
                     if (endBattle == false) {
@@ -751,14 +775,17 @@
                         if (cartaP1.tipo == 'defesa') {
                             if (cartaNPC.dano < 0) {
                                 cartaNPC.dano = 0;
+                                P1.energia += cartaP1.custoEnergia;
                             }
                         } else if (cartaNPC.tipo == 'defesa') {
                             if (cartaP1.dano < 0) {
                                 cartaP1.dano = 0;
+                                NPC.energia += cartaNPC.custoEnergia;
                             }
 
                         }
                         if (cartaP1.tipo == 'veneno') {
+                            P1.energia += cartaP1.custoEnergia;
                             NPC.envenenado.veneno = true;
                             NPC.envenenado.dano = cartaP1.dano;
                             console.log(NPC);
@@ -780,6 +807,7 @@
                             console.log("identificamos que é do tipo veneno.")
                             P1.envenenado.veneno = true;
                             P1.envenenado.dano = cartaNPC.dano;
+                            NPC.energia += cartaNPC.custoEnergia;
                             console.log(NPC);
                         } else if (cartaNPC.tipo == 'ativada') {
                             if (cartaNPC.dano > 0) {
@@ -822,7 +850,16 @@
                         const response = await fetch('/npc'); // Faz uma requisição para a rota '/cartas'
                         if (response.ok) { // Verifica se a resposta foi bem-sucedida (status 200-299)
                             const loadingScreen = document.getElementById('loading-screen');
+                            typingEffect("silvaSpeak", "Oiii, bem vindo ao Jogo. Você está num duelo contra Dio! Ele tem cartas poderosas, mas não se preocupe! Você é capaz de vencer, caso seja esperto. Caso os dois fiquem sem vida, a vitória é dada à quem começou o turno. Se precisar de ajuda pra saber o que a carta do oponente faz, clique nela, e eu explicarei pra você! Para ver suas cartas, arraste o dedo para cima no campo, sem tocar nas cartas. Após decidir qual carta jogar, arraste o dedo para cima sobre ela! Boa sorte! S2 (Clique em qualquer lugar da tela para jogar)", 10)
                             loadingScreen.style.display = 'none';
+                            const handleClick = () => {
+                                nextStep();
+                                document.body.removeEventListener('click', handleClick);
+
+                            };
+                            document.body.addEventListener('click', handleClick);
+                            
+
                         } else {
                             console.error('Falha ao carregar os dados:', response.status, response.statusText);
                         }
@@ -840,13 +877,27 @@
                                 if (playerTurn == false && CartaNPC == null) {
                                     playerTurn = true;
                                     setTimeout(() => {
+                                        
                                         if (players.Dio.vida >= 200) {
-                                            CartaNPC = players.Dio.cartas[i];
-                                            console.log(players.Dio.cartas[i]);
-                                            if (i < 5) {
-                                                i++
+                                            if (players.Dio.energia >= players.Dio.cartas[i].custoEnergia) {
+                                                CartaNPC = players.Dio.cartas[i];;
+                                                console.log(players.Dio.cartas[i]);
+                                                if (i < 5) {
+                                                    i++
+                                                } else {
+                                                    i = 3;
+                                                }
                                             } else {
-                                                i = 3;
+                                                for (let i = 0; i < players.Dio.cartas.length; i++) {
+                                                    // Verifica se a energia da carta é menor ou igual ao custo de energia do Dio
+                                                    if (players.Dio.cartas[i].custoEnergia <= players.Dio.energia) {
+                                                        CartaNPC = players.Dio.cartas[i]; // Armazena a carta encontrada
+                                                        console.log(players.Dio.cartas[i]); // Mostra no console
+
+                                                        // Se encontrar uma carta válida, pode interromper o loop (se desejar)
+                                                        break;
+                                                    }
+                                                }
                                             }
                                         } else {
 
@@ -856,6 +907,9 @@
                                                 i = 1;
                                             }
                                             CartaNPC = players.Dio.cartas[i];
+                                            if (players.Dio.cartas[i].nome == `🌁-❨❨•'The World'•❩❩-🌁『ザ・ワールド, Za wārudo』`) {
+                                                npcFala.innerHTML = "O MUNDO! PARE O TEMPO!"
+                                            }
                                             console.log(players.Dio.cartas[i]);
                                         }
                                         console.log(i);
@@ -944,8 +998,6 @@
                                                 <p><code>${vidaPlayer}❤️</code></p>
                                                 <p><code>${energiaPlayer}⚡</code></p>
                                                 `
-
-                            
                         }, 10);
 
                         // Adiciona cada carta ao container
@@ -954,7 +1006,16 @@
                             const cartaElemento = document.getElementById(`card-npc`);
                             cartaElemento.addEventListener('click', function () {
                                 try {
-                                    alert(CartaNPC.modelo);
+                                    let modelo = CartaNPC.modelo;
+                                    if (endBattle == false) {
+                                        document.getElementById('menu').style.display = "flex";
+                                        document.getElementById('gameContainer').style.filter = "blur(7px)"
+                                        setTimeout(() => {
+                                            document.getElementById('menu').style.opacity = 1;
+                                            document.getElementById('silvaSpeak').innerHTML = `${modelo} <button class="nextButton" onclick="nextStep()">Entendi!</button>`;
+
+                                        }, 1000);
+                                    }
 
                                 } catch (error) {
 
@@ -968,7 +1029,7 @@
                             cartaDiv.setAttribute('data-id', carta.id);
                             cartaDiv.innerHTML = `
                             <div class="shadowCard" style="border-radius: 10px; border: 2px solid black; color: white; background: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; flex-direction: column">
-                            <div class="cardIMG" style="border-radius: 10px; border: 2px solid white; width: 100%; height: 200px; background: url('${carta.desc}'); background-size: cover; background-position: center;"></div>
+                            <div class="cardIMG" style="border-radius: 10px; border: 2px solid white; width: 100%; height: 300px; background: url('${carta.desc}'); background-size: cover; background-position: center;"></div>
                             <div style="padding: 10px">
                             <pre style="font-size: 12px; text-align: center;">${carta.nome}</pre>
             ${carta.modelo ? `<p style="font-size: 11px;">${carta.modelo}</p>` : ''}
@@ -1060,7 +1121,7 @@
             }
         }
 
-        // card-npc
+        // playerwin
         ;
     </script>
 </body>
