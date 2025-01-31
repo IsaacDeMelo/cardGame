@@ -11,6 +11,7 @@
             box-sizing: border-box;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             box-sizing: border-box;
+
             margin: 0;
 
             background: url(https://i.pinimg.com/736x/cc/71/6d/cc716da5427b999ca61a0f5af5457bbb.jpg);
@@ -86,7 +87,7 @@
             width: 100%;
             height: 30vh;
             display: flex;
-            background: url(https://i.pinimg.com/736x/cc/71/6d/cc716da5427b999ca61a0f5af5457bbb.jpg);
+            background: url(https://www.shutterstock.com/image-illustration/field-flowing-stream-beautiful-natural-600nw-2428964117.jpg);
             background-size: cover;
             background-position: top;
 
@@ -101,7 +102,7 @@
 
                 height: auto;
                 color: black;
-                padding: 20px;
+                padding: 10px;
                 margin: 30px;
             }
 
@@ -113,7 +114,7 @@
                 position: absolute;
                 border-left: 20px solid transparent;
                 border-right: 20px solid transparent;
-                /*Faz seta "apontar para baixo. Definir o valor como 'top' fará ela "apontar para cima" */
+                /*Faz seta "apontar para baixo. Definir o valor como 'top' fará ela "apontar para cima" alert(*/
                 /*Aqui entra a cor da "aba" do balão */
                 border-bottom: 20px solid white;
                 top: -20px;
@@ -168,13 +169,15 @@
         }
 
         .loader {
-            border: 8px solid #f3f3f3;
+            border-left: 8px solid rgb(20, 15, 15);
+            border-right: 8px solid rgb(150, 6, 6);
+            border-radius: 50%;
             width: 50px;
             height: 50px;
-            animation: spin 2s linear infinite;
+            animation: spin 1s linear infinite;
         }
 
-        /* From Uiverse.io by augustin_4687 */
+        /* From Uiverse.io by augustin_4687 box-shadow */
         .button {
             --stone-50: #fafaf9;
             --stone-800: #292524;
@@ -423,7 +426,7 @@
             position: absolute;
             display: flex;
             opacity: 1;
-            transition: 2s all linear;
+            transition: 0.5s all linear;
             width: 100%;
             height: 100%;
             justify-content: center;
@@ -439,7 +442,7 @@
                 border-radius: 5px;
                 font-weight: bold;
                 color: #292524;
-                border: 2px solid white; 
+                border: 2px solid white;
                 background-color: rgb(253, 253, 131);
 
             }
@@ -450,11 +453,11 @@
 <body>
     <div class="menu" id="menu">
 
-        <img class="image" src="https://dl.bc.cdn.garenanow.com/bcm/na/img/character/character_a3.png" width="100%">
+        <img class="image" src="https://upload.wikimedia.org/wikipedia/en/8/8a/AstaWSJIssue362015.png" width="60%">
         <div class=""
-            style="font-size: 11px; font-weight: 200; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 20px; box-sizing: border-box; border-top: 5px solid rgb(22, 22, 22);  width: 100%;height: 60%; background-color: rgb(31, 31, 31); color: rgb(253, 253, 131);"
-            id="silvaSpeak"></div>
-        <!-- <button class="button" onclick="window.location.reload()">
+            style="font-size: 13px; font-weight: 200; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 20px; box-sizing: border-box; border-top: 5px solid rgb(22, 22, 22);  width: 100%;height: 60%; background-color: rgb(31, 31, 31); color: rgb(253, 253, 131);"
+            id="silvaSpeak"> </div>
+        <!-- <button class="button" onclick="window.location.reload() turn"> 
             <div>
                 <div>
                     <div>Jogar Novamente</div>
@@ -478,22 +481,62 @@
     </div>
     <div id="gameContainer" style="transition: 3s all; filter: blur(7px)">
         <div class="enemy">
-            <shadow>
+            <shadow style="overflow: hidden;">
+                <div id="atributesNPC"
+                    style="border: 2px solid black; background: url(https://i.pinimg.com/736x/bd/b6/6b/bdb66b4a9ea5cd288518e994bbe46381.jpg); background-size: cover; background-position: center; display: flex; justify-content: center; flex-direction: column; align-items: center; position: absolute; top: 0px; left: 0px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;  min-width: 100px; color: white; background-color: black; ">
+                    <shadow
+                        style="background-color:rgba(0, 0, 0, 0.7); padding: 2.5px; display: flex; justify-content: center; align-items: center; flex-direction: column; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+                        <p style="margin: 0px;"><i>
+                                <%=NPC.nome%>
+                            </i></p>
+
+                        <b id="npcLife" style="font-size: 11px; font-weight: 200; margin: 0px;">
+                            <%=NPC.vida%>❤️
+                        </b>
+                        <b id="npcEnergy" style="font-size: 11px; font-weight: 200; margin: 0px;">
+                            <%=NPC.energia%> ⚡
+                        </b>
+
+                    </shadow>
+                </div>
+                <div id="atributesPlayer"
+                    style="border: 2px solid black; background: url(https://i.pinimg.com/736x/bd/b6/6b/bdb66b4a9ea5cd288518e994bbe46381.jpg); background-size: cover; background-position: center; display: flex; justify-content: center; flex-direction: column; align-items: center; position: absolute; top: 0px; right: 0px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;  min-width: 100px; color: white; background-color: black; ">
+                    <shadow
+                        style="background-color:rgba(0, 0, 0, 0.7); padding: 2.5px; display: flex; justify-content: center; align-items: center; flex-direction: column; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
+                        <p style="margin: 0px;"><i>
+                                <%=Player.nome%>
+                            </i></p>
+
+                        <b id="playerLife" style="font-size: 11px; font-weight: 200; margin: 0px;">
+                            <%=Player.vida%>❤️
+                        </b>
+                        <b id="playerEnergy" style="font-size: 11px; font-weight: 200; margin: 0px;">
+                            <%=Player.energia%> ⚡
+                        </b>
+
+                    </shadow>
+                </div>
                 <div class="chat-baloon" id="chat-baloon">. . . . . . . . </div>
                 <div style="height: 100%; display: flex; ">
-                    <img id="enemyBody" class="enemyBody" src="<%=Dio.aparencia%>" width="170px;">
+                    <img id="enemyBody" class="enemyBody"
+                        src="https://upload.wikimedia.org/wikipedia/en/8/8a/AstaWSJIssue362015.png" width="100px;">
                 </div>
             </shadow>
         </div>
-        <div id="campo-de-batalha" class="campo-de-batalha">
-            <div class="atributosPlayer" id="atributosPlayer"></div>
-            <div class="atributosNPC" id="atributosNPC"></div>
-            <div id="card-npc"
-                style="width: 80px; border-radius: 5px; border: 2px solid black; height: 130px; background-color: rgba(0, 0, 0, 0.5);">
-
+        <div id="campo-de-batalha" style="overflow: hidden" class="campo-de-batalha">
+            <div id="card-npc-old"
+                style="filter: grayscale(100%); position: absolute; left: 20px; width: 80px; border: 2px solid black; height: 130px; background-color: rgba(0, 0, 0, 0.5);">
             </div>
+            <div id="card-player-old"
+                style="filter: grayscale(100%); position: absolute; right: 20px;  width: 80px; border-radius: 5px; border: 2px solid black; height: 130px; background-color: rgba(0, 0, 0, 0.5);">
+            </div>
+            <div id="card-npc"
+                style="position: relative; width: 80px; border-radius: 5px; border: 2px solid black; height: 130px; background-color: rgba(0, 0, 0, 0.5);">
+            </div>
+
+
             <div id="card-player"
-                style="width: 80px; height: 130px; border-radius: 5px; border: 2px solid black; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                style="position: relative; width: 80px; height: 130px; border-radius: 5px; border: 2px solid black; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; flex-direction: column;">
 
             </div>
         </div>
@@ -503,11 +546,26 @@
     </div>
 
     <script>
+        let idDasCartasQueForamJogadas = [];
+        let cooldown = true;
         let endBattle = false;
         let playerwin;
         let rodada = false;
         let playerTurn = null;
         let npcFala = null;
+
+        function endGame(message) {
+            endBattle = true;
+            setTimeout(() => {
+                document.getElementById("menu").style.display = "flex";
+                document.getElementById("gameContainer").style.filter = "blur(7px)";
+                setTimeout(() => {
+                    document.getElementById("menu").style.opacity = 1;
+                    document.getElementById("silvaSpeak").innerHTML = message;
+                }, 1000);
+            }, 1000);
+        }
+
         function nextStep() {
             document.getElementById('menu').style.opacity = 0;
             document.getElementById('gameContainer').style.filter = "none";
@@ -524,7 +582,7 @@
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);  // Adiciona uma letra
                     i++;
-                    setTimeout(type, speed);  // Chama a função novamente após o intervalo de tempo
+                    setTimeout(type, speed);  // Chama a função novamente após o intervalo de tempo cartasEm
                 }
             }
 
@@ -550,168 +608,119 @@
             }, 2000);
         });
 
-        
+
 
 
         function NPCaction(NPC, Player, Espaçop1, EspaçoNPC) {
+            const npcFalaElement = document.getElementById('chat-baloon');
+            const enemyBodyElement = document.getElementById('enemyBody');
+
+            function setRandomPhrase(phrases, delay = 0) {
+                setTimeout(() => {
+                    const randomIndex = Math.floor(Math.random() * phrases.length);
+                    npcFalaElement.innerHTML = phrases[randomIndex];
+                }, delay);
+            }
+
+            function setDefaultPhrase(delay = 0) {
+                setTimeout(() => {
+                    if (playerTurn) {
+                        npcFalaElement.innerHTML = EspaçoNPC ? "Sua vez!" : "Jogue!";
+                    }
+                }, delay);
+            }
+
+
 
             if (NPC.vida > 0 && Player.vida > 0) {
                 if (NPC.vida < 200) {
 
-                    document.getElementById('enemyBody').src = NPC.aparencia2
-                    document.getElementById('enemyBody').style.width = "190px";
-                    console.log(NPC.aparencia2);
-                    const frases = [
-                        "JOGUE! JOGUE! JOGUE!",
-                        "Agora VOCÊ me irritou!",
-                        "INUTIL! INUTIL! INUTIL!",
-                        "NÃO ME FAÇA RIR",
-                        "Estou cansado de você!",
-                        "Imundo! Suas cartas são fracas!",
-                        "É o seu fim!"
+                    const phrases = [
+                        "Parece que você pegou o Jeito",
+                        "Vá com calma aí!",
+                        "Você não era Iniciante?!",
+                        "Muito bom",
+                        "Wow, pega leve!",
                     ];
-                    const indiceAleatorio = Math.floor(Math.random() * frases.length);
-                    npcFala.innerHTML = frases[indiceAleatorio];
-                    setTimeout(() => {
-
-                        if (playerTurn == true && EspaçoNPC == null) {
-                            npcFala.innerHTML = "Jogue, INUTIL!";
-                        } else if (playerTurn == true && EspaçoNPC != null) {
-                            npcFala.innerHTML = "Sua vez, INUTIL!";
-                        }
-
-                    }, 2000);
+                    setRandomPhrase(phrases);
+                    setDefaultPhrase(2000);
                 } else {
                     if (NPC.vida > Player.vida) {
-                        const frases = [
-                            "HAHAHAHA, Você é horrível!",
-                            "A vitória se aproxima de Dio!",
-                            "Eu vou te derrotar em breve!"
+                        const phrases = [
+                            "Vamos, você pode fazer melhor!",
+                            "Não tenha medo de defender!",
+                            "Já gastou suas ativações?!",
+                            "Estou na vantagem",
+                            "Vamos, você pode superar isso!"
                         ];
-                        setTimeout(() => {
-                            const indiceAleatorio = Math.floor(Math.random() * frases.length);
-
-                            npcFala.innerHTML = frases[indiceAleatorio];
-                            if (playerTurn == true && EspaçoNPC == null) {
-                                npcFala.innerHTML = "Vamos, jogue!";
-                            } else if (playerTurn == true && EspaçoNPC != null) {
-                                npcFala.innerHTML = "Vamos, é sua vez!";
-                            }
-
-                        }, 2000);
+                        setRandomPhrase(phrases, 2000);
+                        setDefaultPhrase(2000);
                     } else if (NPC.vida < Player.vida) {
-                        const frases = [
-                            "Droga.. Estou perdendo!",
-                            "A vitória parece distante.",
-                            "Que bela jogada..."
+                        const phrases = [
+                            "Essa foi boa...",
+                            "Tem certeza de que eu sou o professor aqui? Hahaha",
+                            "Que bela jogada...",
                         ];
-                        const indiceAleatorio = Math.floor(Math.random() * frases.length);
-                        npcFala.innerHTML = frases[indiceAleatorio];
-                        setTimeout(() => {
-                            if (playerTurn == true && EspaçoNPC == null) {
-                                npcFala.innerHTML = "Vamos, Jogue! seu Lixo!";
-                            } else if (playerTurn == true && EspaçoNPC != null) {
-                                npcFala.innerHTML = "Vamos, é sua vez, HORRIVEL!";
-                            }
-
-                        }, 4000);
+                        setRandomPhrase(phrases);
+                        setDefaultPhrase(4000);
                     } else {
-                        const frases = [
+                        const phrases = [
                             "Nada mal..",
-                            "Você não é tão ruim!",
-                            "Sorte de Principiante."
+                            "Você tem potencial!",
+                            "Muito bem, vamos continuar assim!"
                         ];
-                        const indiceAleatorio = Math.floor(Math.random() * frases.length);
-                        npcFala.innerHTML = frases[indiceAleatorio];
-                        setTimeout(() => {
-                            if (playerTurn == true && EspaçoNPC == null) {
-                                npcFala.innerHTML = "Vamos, jogue!";
-                            } else if (playerTurn == true && EspaçoNPC != null) {
-                                npcFala.innerHTML = "Vamos, é sua vez!";
-                            }
-                        }, 4000);
+                        setRandomPhrase(phrases);
+                        setDefaultPhrase(4000);
                     }
                 }
-
             } else {
-                endBattle = true;
-                setTimeout(() => {
-                    document.getElementById("menu").style.display = "flex";
-                    document.getElementById("gameContainer").style.filter = "blur(7px)"
-                    setTimeout(() => {
-                        document.getElementById("menu").style.opacity = 1;
-                        document.getElementById("silvaSpeak").innerHTML = " ";
-                        if (playerwin == true) {
-                            document.getElementById("silvaSpeak").innerHTML = `Você venceu, parabéns!!!! Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai adorar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!<div style="display:flex">
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog"><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick="window.location.reload()">Quero jogar novamente!</button></div>`
-                            
-                            
-                        } else {
-                             document.getElementById("silvaSpeak").innerHTML = `Oh, parece que você perdeu desta vez. Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai adorar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!  <div style="display:flex">
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog"><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick="window.location.reload()">Quero tentar novamente!</button></div>`
-                        }
-
-                    }, 1000);
-                }, 1000);
-            }
-            if (Player.vida <= 0 && NPC.vida <= 0) {
-
-                if (playerTurn) {
-                    playerwin = false;
-                    const frases = [
+                if (Player.vida <= 0 && NPC.vida <= 0) {
+                    const phrases = playerTurn ? [
+                        "Ah, não foi dessa vez. Você perdeu.",
+                        "Eu venci!",
+                        "Essa foi por um triz, mas eu venci."
+                    ] : [
+                        "Você venceu! Muito bem!",
+                        "Você mandou muito bem! ",
+                        "Que pena, fui derrotado! Parabéns!"
+                    ];
+                    setRandomPhrase(phrases);
+                    endGame(playerTurn ? "Parece que você perdeu desta vez. Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!  <div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero tentar novamente!</button></div>" : "Você venceu! Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!<div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero jogar novamente!</button></div>");
+                } else if (Player.vida > 0 && NPC.vida <= 0) {
+                    const phrases = [
+                        "Nossa, você conseguiu!",
+                        "Você mandou muito bem! ",
+                        "Que pena, fui derrotado! Parabéns!"
+                    ];
+                    setRandomPhrase(phrases);
+                    endGame("Você venceu! Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!<div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero jogar novamente!</button></div>");
+                } else if (Player.vida <= 0 && NPC.vida > 0) {
+                    const phrases = [
                         "HAHAHAHA, perdedor!",
                         "A VITÓRIA É MINHA!",
                         "Patético!"
                     ];
-                    setTimeout(() => {
-                        const indiceAleatorio = Math.floor(Math.random() * frases.length);
-
-                        npcFala.innerHTML = frases[indiceAleatorio];
-                    });
-                } else {
-                    playerwin = true;
-                    const frases = [
-                        "NÃAAAAO! VOCÊ VENCEU!",
-                        "VOCÊ ME VENCEU? COMO?!",
-                        "DROGA, FUI DERROTADO!"
-                    ];
-                    setTimeout(() => {
-                        const indiceAleatorio = Math.floor(Math.random() * frases.length);
-
-                        npcFala.innerHTML = frases[indiceAleatorio];
-                    });
+                    setRandomPhrase(phrases);
+                    endGame("Parece que você perdeu desta vez. Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!  <div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero tentar novamente!</button></div>");
                 }
             }
-            if (Player.vida > 0 && NPC.vida <= 0) {
-                playerwin = true
-                const frases = [
-                    "NÃAAAAO! VOCÊ VENCEU!",
-                    "VOCÊ ME VENCEU? COMO?!",
-                    "DROGA, FUI DERROTADO!"
-                ];
-                setTimeout(() => {
-                    const indiceAleatorio = Math.floor(Math.random() * frases.length);
-
-                    npcFala.innerHTML = frases[indiceAleatorio];
-                });
+            if (document.getElementById("cartas-container").style.height == 0){
+                endGame("Parece que você perdeu desta vez. Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!  <div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero tentar novamente!</button></div>");  
             }
-            if (Player.vida <= 0 && NPC.vida > 0) {
-                playerwin = false
-                const frases = [
-                    "HAHAHAHA, perdedor!",
-                    "A VITÓRIA É MINHA!",
-                    "Patético!"
-                ];
-                setTimeout(() => {
-                    const indiceAleatorio = Math.floor(Math.random() * frases.length);
-
-                    npcFala.innerHTML = frases[indiceAleatorio];
-                });
+            let aindaTemCartasParaJogar = false;
+            Player.cartas.forEach(element => {
+                if (element.tipo != "ativada"){
+                    aindaTemCartasParaJogar = true;
+                }
+            });
+            if (aindaTemCartasParaJogar == false){
+                endGame("Parece que você perdeu desta vez. Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!  <div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero tentar novamente!</button></div>");  
             }
-
         }
         function startBattle() {
             if (playerTurn != null) {
+                let cartasEmCampo = 0;
+                let cartasEmCampoNPC = 0;
                 let CartaPlayer;
                 let CartaNPC;
                 let AtributosNPC;
@@ -720,7 +729,20 @@
                 let movedDistance = 0;  // Distância movida até agora
 
                 setInterval(() => {
-                    if (CartaPlayer != null && CartaNPC != null && rodada == false) {
+                    if (
+                        // Verifica se CartaPlayer e CartaNPC são arrays ou objetos não nulos
+                        (Array.isArray(CartaPlayer) ? CartaPlayer.length > 0 : CartaPlayer != null) &&
+                        (Array.isArray(CartaNPC) ? CartaNPC.length > 0 : CartaNPC != null) &&
+
+                        // A rodada ainda não começou
+                        rodada == false &&
+
+                        // Verifica se ambos os jogadores jogaram pelo menos uma carta que não seja do tipo 'ativada'
+                        (
+                            (Array.isArray(CartaPlayer) ? CartaPlayer.some(carta => carta.tipo !== 'ativada') : CartaPlayer.tipo !== 'ativada') &&
+                            (Array.isArray(CartaNPC) ? CartaNPC.some(carta => carta.tipo !== 'ativada') : CartaNPC.tipo !== 'ativada')
+                        )
+                    ) {
                         rodada = true;
                         setTimeout(() => {
                             turno(CartaPlayer, CartaNPC, AtributosPlayer, AtributosNPC)
@@ -768,75 +790,141 @@
 
                 }
 
-                function turno(cartaP1, cartaNPC, P1, NPC) {
-                    if (endBattle == false) {
-                        let trueDamageP1 = cartaP1.dano;
-                        let trueDamageNPC = cartaNPC.dano;
-                        if (cartaP1.tipo == 'defesa') {
-                            if (cartaNPC.dano < 0) {
-                                cartaNPC.dano = 0;
-                                P1.energia += cartaP1.custoEnergia;
+                function aplicarEfeito(carta, cartaAlvo, jogador, inimigo) {
+                    // Aplica o efeito baseado no tipo da carta
+                    switch (carta.tipo) {
+                        case 'defesa':
+                            if (cartaAlvo.dano < 0) {
+                                cartaAlvo.dano = 0;
+                                jogador.energia += carta.custoEnergia;
                             }
-                        } else if (cartaNPC.tipo == 'defesa') {
-                            if (cartaP1.dano < 0) {
-                                cartaP1.dano = 0;
-                                NPC.energia += cartaNPC.custoEnergia;
+                            break;
+                        case 'veneno':
+                            jogador.energia += carta.custoEnergia;
+                            inimigo.envenenado = { veneno: true, dano: carta.dano };
+                            break;
+                        case 'ataque':
+                            if (cartaAlvo.tipo != 'defesa') {
+                                jogador.energia += carta.custoEnergia;
+                                inimigo.vida += carta.dano;
                             }
+                            break;
+                        default:
+                            console.warn(`Tipo de carta desconhecido: ${carta.tipo}`);
+                    }
 
-                        }
-                        if (cartaP1.tipo == 'veneno') {
-                            P1.energia += cartaP1.custoEnergia;
-                            NPC.envenenado.veneno = true;
-                            NPC.envenenado.dano = cartaP1.dano;
-                            console.log(NPC);
-                        } else if (cartaP1.tipo == 'ativada') {
-                            if (cartaP1.dano > 0) {
-                                P1.vida += cartaP1.dano;
-                                console.log(cartaP1)
+                }
+                function aplicarEfeitoAtivado(carta, jogador) {
+                    jogador.vida += carta.dano;
+                    jogador.energia += carta.custoEnergia;
+                }
+                function verificarCartas(carta, cartaInimiga, jogador, inimigo) {
+                    if (Array.isArray(carta)) {
+                        carta.forEach(element => {
+                            if (element.tipo == 'ativada') {
+                                aplicarEfeitoAtivado(element, jogador);
+                            } else {
+                                if (Array.isArray(cartaInimiga)) {
+                                    aplicarEfeito(element, cartaInimiga[cartaInimiga.length - 1], jogador, inimigo)
+                                } else {
+                                    aplicarEfeito(element, cartaInimiga, jogador, inimigo)
+                                }
                             }
-                            if (cartaP1.custoEnergia > 0) {
-                                P1.energia += cartaP1.custoEnergia;
-                                console.log(cartaP1)
-                            }
-                        } else if (cartaP1.tipo == 'ataque') {
-                            P1.energia += cartaP1.custoEnergia;
-                            NPC.vida += cartaP1.dano;
-                        }
-                        console.log(cartaNPC.tipo)
-                        if (cartaNPC.tipo == 'veneno') {
-                            console.log("identificamos que é do tipo veneno.")
-                            P1.envenenado.veneno = true;
-                            P1.envenenado.dano = cartaNPC.dano;
-                            NPC.energia += cartaNPC.custoEnergia;
-                            console.log(NPC);
-                        } else if (cartaNPC.tipo == 'ativada') {
-                            if (cartaNPC.dano > 0) {
-                                NPC.vida += cartaNPC.dano;
-                                console.log(cartaNPC)
-                            }
-                            if (cartaNPC.custoEnergia > 0) {
-                                NPC.energia += cartaNPC.custoEnergia;
-                                console.log(cartaNPC)
-                            }
-                        } else if (cartaNPC.tipo == 'ataque') {
-                            NPC.energia += cartaNPC.custoEnergia;
-                            console.log(P1.vida + " " + cartaNPC.dano)
-                            P1.vida += cartaNPC.dano;
-                        }
-                        cartaP1.dano = trueDamageP1;
-                        cartaNPC.dano = trueDamageNPC;
-                        cartaP1 = null;
-                        cartaNPC = null;
-                        console.log(NPC);
-                        console.log(P1);
-                        document.getElementById('sub-card-npc').style.opacity = 0
-                        document.getElementById('sub-card-player').style.opacity = 0
-                        danoFixoPorTurno(NPC, P1)
-
-                        if (playerTurn == false) {
-                            playerTurn = true;
+                        });
+                    } else {
+                        if (carta.tipo == 'ativada') {
+                            aplicarEfeitoAtivado(carta, jogador);
                         } else {
-                            playerTurn = false;
+                            if (Array.isArray(cartaInimiga)) {
+                                aplicarEfeito(carta, cartaInimiga[cartaInimiga.length - 1], jogador, inimigo)
+
+                            } else {
+                                aplicarEfeito(carta, cartaInimiga, jogador, inimigo)
+                            }
+                        }
+                    }
+                }
+                function turno(cartaP1, cartaNPC, P1, NPC) {
+                    if (!endBattle) {
+                        cooldown = false;
+                        if (true) {
+                            let trueDamageP1 = cartaP1.dano;
+                            let trueDamageNPC = cartaNPC.dano;
+                            verificarCartas(cartaP1, cartaNPC, P1, NPC)
+                            verificarCartas(cartaNPC, cartaP1, NPC, P1);
+                            cartaP1.dano = trueDamageP1;
+                            cartaNPC.dano = trueDamageNPC;
+                            cartasEmCampo = 0;
+                            let oldCartaP1 = cartaP1;
+                            let oldCartaNPC = cartaNPC;
+                            //document.getElementById(`card-player-old`).innerHTML = document.getElementById(`card-player`).innerHTML;
+                            //document.getElementById(`card-npc-old`).innerHTML = document.getElementById(`card-npc`).innerHTML;
+
+                            if (Array.isArray(cartaP1)) {
+                                 
+                                cartaP1.forEach(element => {
+                                    document.getElementById(`sub-card-player-${element.id}`).style.opacity = 0;
+                    
+                                });
+                            } else {
+
+                                document.getElementById(`sub-card-player-${cartaP1.id}`).style.opacity = 0;
+                            }
+                            if (Array.isArray(cartaNPC)) {
+                                cartaNPC.forEach(element => {
+                                    document.getElementById(`sub-card-npc-${element.id}`).style.opacity = 0;
+
+                                });
+                            }
+                            else {
+                                document.getElementById(`sub-card-npc-${cartaNPC.id}`).style.opacity = 0;
+                            }
+                            let oldCardP = document.getElementById(`card-player`).innerHTML;
+                            let oldCardN = document.getElementById(`card-npc`).innerHTML;
+                            setTimeout(() => {
+                                document.getElementById(`card-player`).innerHTML = "";
+                                document.getElementById(`card-npc`).innerHTML = "";
+                                document.getElementById(`card-player-old`).innerHTML = oldCardP;
+                                document.getElementById(`card-npc-old`).innerHTML = oldCardN;
+                                setTimeout(() => {
+                                    if (Array.isArray(oldCartaP1)) {
+
+                                        oldCartaP1.forEach(element => {
+                                            document.getElementById(`sub-card-player-${element.id}`).style.opacity = 1;
+                                        });
+                                    } else {
+
+                                        document.getElementById(`sub-card-player-${oldCartaP1.id}`).style.opacity = 1;
+                                    }
+                                    if (Array.isArray(oldCartaNPC)) {
+                                        oldCartaNPC.forEach(element => {
+                                            document.getElementById(`sub-card-npc-${element.id}`).style.opacity = 1;
+
+                                        });
+                                    }
+                                    else {
+                                        document.getElementById(`sub-card-npc-${oldCartaNPC.id}`).style.opacity = 1;
+                                    }
+                                }, 100);
+
+                                cooldown = true;
+                            }, 2000);
+                            // Atualizar a interface (opacidade)
+
+                            cartaP1 = null;
+                            cartaNPC = null;
+                            cartasEmCampo = 0;
+                            cartasEmCampoNPC = 0;
+                            // Chama a função que processa o dano fixo
+                            danoFixoPorTurno(NPC, P1);
+
+                            // Alterna o turno
+
+                            playerTurn = !playerTurn;
+
+
+                        } else {
+
                         }
                     } else {
                         playerTurn = true;
@@ -845,79 +933,132 @@
 
                 // Função para carregar cartas via AJAX
                 async function carregarCartas() {
-                    try {
+                    try {   
+                        
                         // Gera um número aleatório (0 ou 1)
                         const response = await fetch('/npc'); // Faz uma requisição para a rota '/cartas'
                         if (response.ok) { // Verifica se a resposta foi bem-sucedida (status 200-299)
                             const loadingScreen = document.getElementById('loading-screen');
-                            typingEffect("silvaSpeak", "Oiii, bem vindo ao Jogo. Você está num duelo contra Dio! Ele tem cartas poderosas, mas não se preocupe! Você é capaz de vencer, caso seja esperto. Caso os dois fiquem sem vida, a vitória é dada à quem começou o turno. Se precisar de ajuda pra saber o que a carta do oponente faz, clique nela, e eu explicarei pra você! Para ver suas cartas, arraste o dedo para cima no campo, sem tocar nas cartas. Após decidir qual carta jogar, arraste o dedo para cima sobre ela! Boa sorte! S2 (Clique em qualquer lugar da tela para jogar)", 10)
+                            typingEffect("silvaSpeak", "Seja bem vindo, Mago! Eu sou Asta, e vou te ensinar como jogar! Basicamente, você tem cartas que pode usar contra mim no momento, cartas de Defesa, Ataque e Ativação. Você pode jogar quantas ativações quiser de uma vez, mas somente uma Defesa ou um Ataque. Para ver suas cartas, arraste o dedo para cima sobre o Campo de Batalha. Se suas cartas acabarem, você perde! Se nossas vidas cheguem a Zero ao mesmo tempo, ganhará aquele que tiver mais energia, então, cuidado! Clique sobre minha carta caso queira saber o que ela faz, e eu te explicarei. Vou pegar leve com você, não se preocupe. (Clique em qualquer lugar da tela para Jogar)", 10)
                             loadingScreen.style.display = 'none';
                             const handleClick = () => {
                                 nextStep();
                                 document.body.removeEventListener('click', handleClick);
-
                             };
                             document.body.addEventListener('click', handleClick);
-                            
+
 
                         } else {
                             console.error('Falha ao carregar os dados:', response.status, response.statusText);
                         }
 
                         const players = await response.json();
-                        AtributosNPC = players.Dio;
+                        AtributosNPC = players.NPC;
                         AtributosPlayer = players.Player;
                         console.log(players);
                         const container = document.getElementById('cartas-container');
                         container.innerHTML = ''; // Limpa o conteúdo atual
                         let i = 3;
                         setInterval(() => {
-                            console.log(playerTurn + " " + CartaNPC)
+                            console.log(cartasEmCampo);
+                            
                             if (endBattle == false) {
-                                if (playerTurn == false && CartaNPC == null) {
-                                    playerTurn = true;
-                                    setTimeout(() => {
-                                        
-                                        if (players.Dio.vida >= 200) {
-                                            if (players.Dio.energia >= players.Dio.cartas[i].custoEnergia) {
-                                                CartaNPC = players.Dio.cartas[i];;
-                                                console.log(players.Dio.cartas[i]);
+                                if (playerTurn == false) {
+
+                                    if (
+                                        (CartaNPC == null) ||  // Se CartaNPC for null
+                                        (Array.isArray(CartaNPC) && CartaNPC.every(carta => carta.tipo === 'ativada'))  // Se for um array e todas as cartas forem do tipo 'ativada'
+                                    ) {
+
+                                        setTimeout(() => {
+
+
+                                            if (players.NPC.energia >= -players.NPC.cartas[i].custoEnergia) {
+                                                if (players.NPC.cartas[i].tipo != "ativada") {
+                                                    if (!Array.isArray(CartaNPC)) {
+                                                        CartaNPC = players.NPC.cartas[i];
+
+                                                    } else {
+                                                        CartaNPC.push(players.NPC.cartas[i]);
+
+                                                    }
+                                                } else {
+                                                    if (!Array.isArray(CartaNPC)) {
+                                                        CartaNPC = [];  // Se ainda não for um array, inicializa como array vazio
+                                                    }
+                                                    CartaNPC.push(players.NPC.cartas[i]);  // Adiciona a carta ao array
+                                                }
+                                                console.log(`Custo da carta ${-players.NPC.cartas[i].custoEnergia}. Energia ${players.NPC.energia}`);
                                                 if (i < 5) {
                                                     i++
                                                 } else {
-                                                    i = 3;
+                                                    i = 0;
                                                 }
                                             } else {
-                                                for (let i = 0; i < players.Dio.cartas.length; i++) {
-                                                    // Verifica se a energia da carta é menor ou igual ao custo de energia do Dio
-                                                    if (players.Dio.cartas[i].custoEnergia <= players.Dio.energia) {
-                                                        CartaNPC = players.Dio.cartas[i]; // Armazena a carta encontrada
-                                                        console.log(players.Dio.cartas[i]); // Mostra no console
+                                                let temCartas = false;
 
-                                                        // Se encontrar uma carta válida, pode interromper o loop (se desejar)
-                                                        break;
+                                                for (let i = 0; i < players.NPC.cartas.length; i++) {
+                                                    if (-players.NPC.cartas[i].custoEnergia <= players.NPC.energia && players.NPC.cartas[i].tipo != 'ativada') {
+                                                        temCartas = true
                                                     }
                                                 }
-                                            }
-                                        } else {
+                                                if (temCartas) {
+                                                    for (let i = 0; i < players.NPC.cartas.length; i++) {
+                                                        // Verifica se a energia da carta é menor ou igual ao custo de energia do NPC
+                                                        if (-players.NPC.cartas[i].custoEnergia <= players.NPC.energia) {
+                                                            if (players.NPC.cartas[i].tipo != "ativada") {
+                                                                if (!Array.isArray(CartaNPC)) {
+                                                                    CartaNPC = players.NPC.cartas[i];
 
-                                            if (i < 5) {
-                                                i++
+                                                                } else {
+                                                                    CartaNPC.push(players.NPC.cartas[i]);
+
+                                                                }
+                                                            } else {
+                                                                if (!Array.isArray(CartaNPC)) {
+                                                                    CartaNPC = [];  // Se ainda não for um array, inicializa como array vazio
+                                                                }
+                                                                CartaNPC.push(players.NPC.cartas[i]);  // Adiciona a carta ao array
+                                                            }
+                                                            console.log(players.NPC.cartas[i]); // Mostra no console
+                                                            break
+                                                            // Se encontrar uma carta válida, pode interromper o loop (se desejar)
+                                                        }
+                                                    }
+                                                } else {
+                                                    playerwin = true;
+                                                    endGame("Você venceu! Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!<div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero jogar novamente!</button></div>");
+                                                    alert("AFEE")
+                                                }
+                                            }
+
+                                            if (Array.isArray(CartaNPC)) {
+                                                CartaNPC.forEach(element => {
+                                                    document.getElementById('card-npc').innerHTML += `
+                                        <div id="sub-card-npc-${element.id}" style=" position: absolute; margin-left: ${cartasEmCampoNPC}px; box-shadow: black 0px 11px 20px 8px; position: absolute; border-radius: 5px ;background: url(card3.jpg); background-size: cover; background-position: center; opacity: 0; transition: 1s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                                        <div style="height: 45%; width: 90%; background-image: url(${element.desc}); border: 1px solid black; border-radius: 5px; background-size: cover; background-position: center;"></div>
+                                        <div style="height: 50%; width: 100%; background: rgba(0, 0, 0, 0.5); margin-left: 5px; margin-right: 5px; color: white;">
+                                        ${element.dano !== undefined && element.dano < 0 && element.dano ? `<p style="font-size: 12px; margin: 1px">${element.dano}%💔</p>` : ``}
+                                        ${element.dano !== undefined && element.dano > 0 && element.dano ? `<p style="font-size: 12px; margin: 1px">${element.dano}%❤️</p>` : ``} 
+                                         ${element.custoEnergia !== undefined && element.custoEnergia < 0 && element.custoEnergia ? `<p style="font-size: 12px; margin: 1px">${element.custoEnergia}%⚡</p>` : ``}
+                                        ${element.custoEnergia !== undefined && element.custoEnergia > 0 && element.custoEnergia ? `<p style="font-size: 12px; margin: 1px">${element.custoEnergia}%⚡</p>` : ``}   
+                                        </div>
+                                    `
+
+                                                    setTimeout(() => {
+                                                        document.getElementById(`sub-card-npc-${element.id}`).style.opacity = 1;
+                                                        cartasEmCampoNPC += 20;
+                                                        if (Array.isArray(CartaNPC) && CartaNPC.every(carta => carta.tipo === 'ativada')) {
+
+                                                        } else {
+                                                            playerTurn = true;
+                                                        }
+
+                                                    }, 500);
+                                                });
                                             } else {
-                                                i = 1;
-                                            }
-                                            CartaNPC = players.Dio.cartas[i];
-                                            if (players.Dio.cartas[i].nome == `🌁-❨❨•'The World'•❩❩-🌁『ザ・ワールド, Za wārudo』`) {
-                                                npcFala.innerHTML = "O MUNDO! PARE O TEMPO!"
-                                            }
-                                            console.log(players.Dio.cartas[i]);
-                                        }
-                                        console.log(i);
-                                        console.log(CartaNPC)
-
-                                        document.getElementById('card-npc').innerHTML = "";
-                                        document.getElementById('card-npc').innerHTML = `
-                                        <div id="sub-card-npc" style=" border-radius: 5px ;background: url(card3.jpg); background-size: cover; background-position: center; opacity: 0; transition: 1s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                                                document.getElementById('card-npc').innerHTML += `
+                                        <div id="sub-card-npc-${CartaNPC.id}" style="box-shadow: black 0px 11px 20px 8px; position: absolute; border-radius: 5px ;background: url(card3.jpg); background-size: cover; background-position: center; opacity: 0; transition: 1s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
                                         <div style="height: 45%; width: 90%; background-image: url(${CartaNPC.desc}); border: 1px solid black; border-radius: 5px; background-size: cover; background-position: center;"></div>
                                         <div style="height: 50%; width: 100%; background: rgba(0, 0, 0, 0.5); margin-left: 5px; margin-right: 5px; color: white;">
                                         ${CartaNPC.dano !== undefined && CartaNPC.dano < 0 && CartaNPC.dano ? `<p style="font-size: 12px; margin: 1px">${CartaNPC.dano}%💔</p>` : ``}
@@ -926,28 +1067,28 @@
                                         ${CartaNPC.custoEnergia !== undefined && CartaNPC.custoEnergia > 0 && CartaNPC.custoEnergia ? `<p style="font-size: 12px; margin: 1px">${CartaNPC.custoEnergia}%⚡</p>` : ``}   
                                         </div>
                                     `
-                                        setTimeout(() => {
-                                            document.getElementById('sub-card-npc').style.opacity = 1;
-                                        }, 500);
+                                                setTimeout(() => {
+                                                    document.getElementById(`sub-card-npc-${CartaNPC.id}`).style.opacity = 1;
+                                                    if (Array.isArray(CartaNPC) && CartaNPC.every(carta => carta.tipo === 'ativada')) {
+
+                                                    } else {
+                                                        playerTurn = true;
+                                                    }
+                                                }, 500);
+                                            }
+
+                                        }, 1000);
 
 
-                                    }, 1000);
-
-
+                                    }
                                 }
                             }
 
                         }, 2000);
-                        setInterval(() => {
-
-                            if (CartaNPC != null && CartaPlayer != null) {
-
-                            }
-                        }, 100);
                         let vidaPlayer = players.Player.vida;
                         let energiaPlayer = players.Player.energia;
-                        let vidaNPC = players.Dio.vida;
-                        let energiaNPC = players.Dio.energia;
+                        let vidaNPC = players.NPC.vida;
+                        let energiaNPC = players.NPC.energia;
                         setInterval(() => {
                             if (energiaPlayer > players.Player.energia) {
                                 energiaPlayer -= 1;
@@ -959,14 +1100,14 @@
                             } else if (vidaPlayer < players.Player.vida) {
                                 vidaPlayer += 1;
                             }
-                            if (energiaNPC > players.Dio.energia) {
+                            if (energiaNPC > players.NPC.energia) {
                                 energiaNPC -= 1;
-                            } else if (energiaNPC < players.Dio.energia) {
+                            } else if (energiaNPC < players.NPC.energia) {
                                 energiaNPC += 1;
                             }
-                            if (vidaNPC > players.Dio.vida) {
+                            if (vidaNPC > players.NPC.vida) {
                                 vidaNPC -= 1;
-                            } else if (vidaNPC < players.Dio.vida) {
+                            } else if (vidaNPC < players.NPC.vida) {
                                 vidaNPC += 1;
                             }
                             if (players.Player.vida > 300) {
@@ -979,29 +1120,31 @@
                             } else if (players.Player.energia < 0) {
                                 players.Player.energia = 0;
                             }
-                            if (players.Dio.vida > 300) {
-                                players.Dio.vida = 300
-                            } else if (players.Dio.vida < 0) {
-                                players.Dio.vida = 0;
+                            if (players.NPC.vida > 300) {
+                                players.NPC.vida = 300
+                            } else if (players.NPC.vida < 0) {
+                                players.NPC.vida = 0;
                             }
-                            if (players.Dio.energia > 300) {
-                                players.Dio.energia = 300
-                            } else if (players.Dio.energia < 0) {
-                                players.Dio.energia = 0;
+                            if (players.NPC.energia > 300) {
+                                players.NPC.energia = 300
+                            } else if (players.NPC.energia < 0) {
+                                players.NPC.energia = 0;
                             }
-                            const statusNPC = document.getElementById('atributosNPC');
-                            statusNPC.innerHTML = `<h4 style="margin: 5px;"><code>${players.Dio.nome}</code></h4>
-                                                <p><code>${vidaNPC}❤️</code></p>
-                                                <p><code>${energiaNPC}</code>⚡</p>
-                                                <code>-------</code>
-                                                <h4 style="margin: 5px;"><code>${players.Player.nome}</code></h4>
-                                                <p><code>${vidaPlayer}❤️</code></p>
-                                                <p><code>${energiaPlayer}⚡</code></p>
-                                                `
+
+                            const npcLife = document.getElementById('npcLife');
+                            const npcEnergy = document.getElementById('npcEnergy');
+                            const playerLife = document.getElementById('playerLife');
+                            const playerEnergy = document.getElementById('playerEnergy');
+                            npcLife.innerHTML = `${vidaNPC}❤️`
+                            npcEnergy.innerHTML = `${energiaNPC}⚡`
+                            playerLife.innerHTML = `${vidaPlayer}❤️`
+                            playerEnergy.innerHTML = `${energiaPlayer}⚡`
+
+
                         }, 10);
 
                         // Adiciona cada carta ao container
-                        players.Dio.cartas.forEach(carta => {
+                        players.NPC.cartas.forEach(carta => {
 
                             const cartaElemento = document.getElementById(`card-npc`);
                             cartaElemento.addEventListener('click', function () {
@@ -1022,6 +1165,15 @@
                                 }
                             })
                         })
+
+
+
+
+
+
+
+
+
                         players.Player.cartas.forEach(carta => {
 
                             const cartaDiv = document.createElement('div');
@@ -1052,57 +1204,92 @@
                             // Seleciona o evento touchmove
                             cartaElemento.addEventListener('touchmove', function (event) {
                                 if (endBattle == false) {
-                                    if (playerTurn == true) {
-
+                                    if (playerTurn == true && cooldown) {
                                         // Calcula a distância movida no eixo Y
                                         const currentY = event.touches[0].clientY;
                                         movedDistance = startY - currentY;  // Distância movida (em pixels)
-                                        if (CartaPlayer == null) {
+                                        if (
+                                            (CartaPlayer == null) ||  // Se CartaPlayer for null
+                                            (Array.isArray(CartaPlayer) && CartaPlayer.every(carta => carta.tipo === 'ativada'))  // Se for um array e todas as cartas forem do tipo 'ativada'
+                                        ) {
                                             // Verifica se o movimento foi maior que 10 cm (aproximadamente 378 pixels)
                                             if (movedDistance >= 150) {
-
-                                                setTimeout(() => {
-                                                    document.getElementById('cartas-container').style.top = "90%";
-                                                }, 1000);
-
-                                                cartaElemento.style.position = 'fixed';
-                                                cartaElemento.style.left = "5%";
-                                                cartaElemento.style.opacity = "0";
-                                                cartaElemento.style.marginBottom = "200vh";
-                                                cartaElemento.innerHTML = ""
-                                                setTimeout(() => {
-
-                                                    cartaElemento.style.marginLeft = "0px";
-                                                    cartaElemento.style.marginRight = "0px";
-                                                    cartaElemento.style.padding = "0px";
-                                                    cartaElemento.style.width = "0px";
-
-                                                }, 2000);
-                                                setTimeout(() => {
-                                                    cartaElemento.style.display = "none";
-                                                }, 3000);
                                                 const dataId = cartaElemento.getAttribute('data-id');
+
+                                                let c;
                                                 players.Player.cartas.forEach(carta => {
                                                     if (carta.id == dataId) {
-                                                        document.getElementById('card-player').innerHTML = "";
-                                                        document.getElementById('card-player').innerHTML = `
-    <div id="sub-card-player" style="border-radius: 5px ;background: url(card3.jpg); background-size: cover; background-position: center; opacity: 0; transition: 1s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-    <div style="height: 45%; width: 90%; background-image: url(${carta.desc}); background-size: cover; background-position: center; border: 1px solid black; border-radius: 5px;"></div>
-    <div style="height: 50%; width: 100%;  background: rgba(0, 0, 0, 0.5); margin-left: 5px; margin-right: 5px; color: white;">
-    ${carta.dano !== undefined && carta.dano < 0 && carta.dano ? `<p style="font-size: 12px; margin: 1px">${carta.dano}%💔</p>` : ``}
-    ${carta.dano !== undefined && carta.dano > 0 && carta.dano ? `<p style="font-size: 12px; margin: 1px">${carta.dano}%❤️</p>` : ``} 
-     ${carta.custoEnergia !== undefined && carta.custoEnergia < 0 && carta.custoEnergia ? `<p style="font-size: 12px; margin: 1px">${carta.custoEnergia}%⚡</p>` : ``}
-    ${carta.custoEnergia !== undefined && carta.custoEnergia > 0 && carta.custoEnergia ? `<p style="font-size: 12px; margin: 1px">${carta.custoEnergia}%⚡</p>` : ``}   
-    </div>
-`
-                                                        setTimeout(() => {
-                                                            document.getElementById('sub-card-player').style.opacity = 1;
-                                                            CartaPlayer = carta;
-                                                            playerTurn = false;
-                                                        }, 500);
-
+                                                        c = carta;
                                                     }
                                                 });
+                                                if (players.Player.energia >= -c.custoEnergia) {
+                                                    setTimeout(() => {
+                                                        document.getElementById('cartas-container').style.top = "90%";
+                                                    }, 1000);
+
+                                                    cartaElemento.style.position = 'fixed';
+                                                    cartaElemento.style.left = "5%";
+                                                    cartaElemento.style.opacity = "0";
+                                                    cartaElemento.style.marginBottom = "200vh";
+                                                    cartaElemento.innerHTML = ""
+                                                    setTimeout(() => {
+
+                                                        cartaElemento.style.marginLeft = "0px";
+                                                        cartaElemento.style.marginRight = "0px";
+                                                        cartaElemento.style.padding = "0px";
+                                                        cartaElemento.style.width = "0px";
+
+                                                    }, 2000);
+                                                    setTimeout(() => {
+                                                        cartaElemento.style.display = "none";
+                                                    }, 3000);
+
+                                                    if (!idDasCartasQueForamJogadas.includes(dataId)) {
+                                                        players.Player.cartas.forEach(carta => {
+                                                            if (carta.id == dataId) {
+                                                                document.getElementById('card-player').innerHTML += `
+    <div id="sub-card-player-${carta.id}" style="box-sizing: content-box; box-shadow: black 0px 11px 20px 8px; margin-left: ${cartasEmCampo}px; position: absolute; border-radius: 5px ;background: url(card3.jpg); background-size: cover; background-position: center; opacity: 1; transition: 1s all linear; height: 100%; width: 100%; background-color: white; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <div style="height: 45%; width: 90%; background-image: url(${carta.desc}); background-size: cover; background-position: center; border: 1px solid black; border-radius: 5px;"></div>
+    <div style="height: 50%; width: 100%;  background: rgba(0, 0, 0, 0.5); margin-left: 5px; margin-right: 5px; color: white; ">
+    ${carta.dano !== undefined && carta.dano < 0 && carta.dano ? `<p style="font-size: 12px; margin: 1px;">${carta.dano}%💔</p>` : ``}
+    ${carta.dano !== undefined && carta.dano > 0 && carta.dano ? `<p style="font-size: 12px; margin: 1px;">${carta.dano}%❤️</p>` : ``} 
+     ${carta.custoEnergia !== undefined && carta.custoEnergia < 0 && carta.custoEnergia ? `<p style="font-size: 12px; margin: 1px;">${carta.custoEnergia}%⚡</p>` : ``}
+    ${carta.custoEnergia !== undefined && carta.custoEnergia > 0 && carta.custoEnergia ? `<p style="font-size: 12px; margin: 1px;">${carta.custoEnergia}%⚡</p>` : ``}   
+    </div>
+`
+                                                                idDasCartasQueForamJogadas.push(dataId);
+                                                                setTimeout(() => {
+
+                                                                    document.getElementById(`sub-card-player-${carta.id}`).style.opacity = 1;
+                                                                    cartasEmCampo += 40;
+                                                                    if (carta.tipo != "ativada") {
+                                                                        cartasEmCampo = 0;
+                                                                        if (!Array.isArray(CartaPlayer)) {
+                                                                            CartaPlayer = carta;
+                                                                            playerTurn = false;
+                                                                        } else {
+                                                                            CartaPlayer.push(carta);
+                                                                            playerTurn = false;
+                                                                        }
+
+                                                                    } else {
+                                                                        if (!Array.isArray(CartaPlayer)) {
+                                                                            CartaPlayer = [];  // Se ainda não for um array, inicializa como array vazio
+                                                                        }
+                                                                        CartaPlayer.push(carta);  // Adiciona a carta ao array
+                                                                    }
+
+                                                                }, 500);
+
+                                                            }
+                                                        });
+                                                    }
+                                                } else {
+                                                    cartaElemento.style.marginBottom = "30vh";
+                                                    setTimeout(() => {
+                                                        cartaElemento.style.marginBottom = "0vh";
+                                                    }, 100);
+                                                }
                                             }
                                         }
                                     }
@@ -1121,7 +1308,7 @@
             }
         }
 
-        // playerwin
+        // alert()
         ;
     </script>
 </body>

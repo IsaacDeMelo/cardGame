@@ -36,7 +36,7 @@ class Carta {
   }
 }
 
-class NPC {
+class Jogador {
   constructor(nome, cartas, energia, vida, aparencia, aparencia2) {
     this.nome = nome;
     this.cartas = cartas;
@@ -67,9 +67,9 @@ const c2 = new Carta( `🌁-((👩🏻•'Regeneração Real'•👩🏻))-🌁
          『本当の再生; Hontō no Saisei』`, 'ativada', 50, 50, `Regenera:『+50%⚡』De Energia.
 Regenera:『+50%❤️』De Vida. A realeza do novo mundo aguarda ansiosamente por batalhas. Uma das razões para isso é que eles tem técnicas secretas nunca antes vistas e querem testa-las em seus inimigos. Regenerar é uma de suas muitas habilidades.`, 'https://i.pinimg.com/736x/52/00/ef/5200ef1700b8e5f7ec8d9fa92fbd77d3.jpg')
 const c3 = new Carta( `⏺️-❨❨🌁•'Arremesso De Lâminas'•🌁❩❩-⏺️
-    『ブレード投げ , Burēdo nage』 `, 'ataque', -70, -110, `
-Dano:『110%💔』. Custo De Energia:『-70%⚡』. Assim como na sua técnica corporal, os navegadores usam a força do corpo, mas dessa vez aliada a pontaria e sorte para acertar o adversário com suas lâminas. Eles miram e jogam, tudo friamente calculado, caso acerte também pode matar.
-\n➖Esse É Um Golpe Básico À Distância.`, `https://i.pinimg.com/736x/19/84/c1/1984c130e6d7b14598893354c679234f.jpg`)
+    『ブレード投げ , Burēdo nage』 `, 'ataque', -70, -100, `
+Dano:『100%💔』. Custo De Energia:『-70%⚡』. Assim como na sua técnica corporal, os navegadores usam a força do corpo, mas dessa vez aliada a pontaria e sorte para acertar o adversário com suas lâminas. Eles miram e jogam, tudo friamente calculado, caso acerte também pode matar.
+\n➖Esse É Um Golpe Básico À Distância.`, `https://i.pinimg.com/736x/f1/dc/62/f1dc6280b9b4b8b1bc39a728ab97c599.jpg`)
 const c4 = new Carta( `⏺️-❨❨🌁•'Mil Coordenadas'•🌁❩❩-⏺️
      『千の座標, Sen no zahyō』 `, `defesa`, -50, 0, `Custo De Energia:『-50%⚡』. Com esta técnica o usuário usa de sua inteligência para criar várias pistas falsas de sua localização, fazendo o seu oponente seguir caminhos diferentes, e com isso criando tempo suficiente para se ocultar de qualquer ameaça ou até mesmo tomar um cházinho.
 \n ➖Esse Movimento É Uma Ocultação Básica.`, `https://i.pinimg.com/736x/ad/3d/19/ad3d19ef9ea0aa71555b6ee86afdf068.jpg`)
@@ -99,14 +99,14 @@ const c9 = new Carta( `🌁-❨❨👩🏻•'Fúria do Dragão'•👩🏻❩�
 Os dragões do novo mundo, apesar de raros, ensinam aos guerreiros técnicas destrutivas. Com esta habilidade, o usuário canaliza sua fúria e liberta um golpe avassalador em forma de chamas.  
 \n➖Essa É Uma Habilidade Ofensiva Avançada.`, 'https://i.pinimg.com/736x/fc/76/3a/fc763a16f3fec09834ce0c607da0f41e.jpg');
 const c10 = new Carta( `🌁-❨❨👩🏻•'Fúria do Oceano'•👩🏻❩❩-🌁
-    『オーシャンフューリー, Ōshanfu~yūrī』`, `ataque`, -90, -120,
-  `Dano:『120%💔』. Custo De Energia:『-90%⚡』.  
+    『オーシャンフューリー, Ōshanfu~yūrī』`, `ataque`, -90, -100,
+  `Dano:『100%💔』. Custo De Energia:『-90%⚡』.  
 O usuário dessa habilidade usa da Magia aquática para causar danos severos à quem for atingido.  
 \n➖Essa É Uma Habilidade Ofensiva Avançada.`, 'https://i.pinimg.com/736x/c3/54/b4/c354b49cb8b3923cdd768e17a7f194b7.jpg');
 const c11 = new Carta( `🌁-❨❨•'The World'•❩❩-🌁『ザ・ワールド, Za wārudo』`, `defesa`, -50, 0, `Custo De Energia:『-90%⚡』. O usuário dessa carta Pausa o tempo por 5 segundos, impedindo seu adversário de ataca-lo.`, `https://i.pinimg.com/736x/d5/c4/38/d5c4389ae16d0ead7c84b94318e649c4.jpg`)
-const Dio = new NPC(`Dio`, [c1, c11, c2, c3, c4, c7], 300, 300, `https://www.pngall.com/wp-content/uploads/14/Dio-PNG-Images.png`, `https://www.pngarts.com/files/10/Dio-PNG-High-Quality-Image.png`)
-const Player = new NPC(`Jogador`, [c5, c2, c6, c7, c8, c9, c10, c6, c7], 300, 300, `https://dl.bc.cdn.garenanow.com/bcm/br/img/character/character_a1.png`)
-Dio.cartas = Dio.cartas.map(carta => carta.clone());
+const NPC = new Jogador(`Asta`, [c1, c2, c3, c4, c7, c3], 300, 300, `https://www.pngall.com/wp-content/uploads/14/Dio-PNG-Images.png`, `https://www.pngarts.com/files/10/Dio-PNG-High-Quality-Image.png`)
+const Player = new Jogador(`Jogador`, [c5, c2, c6, c7, c8, c9, c10, c6, c7], 300, 300, `https://dl.bc.cdn.garenanow.com/bcm/br/img/character/character_a1.png`)
+NPC.cartas = NPC.cartas.map(carta => carta.clone());
 Player.cartas = Player.cartas.map(carta => carta.clone());
 
 // Rota principal
@@ -116,16 +116,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/game', (req, res) => {
-  res.render('index', { Dio: Dio });
+  res.render('index', { NPC: NPC, Player: Player });
 });
 
 // Nova rota para retornar as cartas como JSON
 app.get('/cartas', (req, res) => {
-  res.json(Dio.cartas); // Retorna apenas as cartas de Dio
+  res.json(NPC.cartas); // Retorna apenas as cartas de NPC
 });
 
 app.get('/npc', (req, res) => {
-  res.json({ Dio, Player }); // Retorna apenas as cartas de Dio
+  res.json({ NPC, Player }); // Retorna apenas as cartas de NPC
 });
 
 // Inicializando o servidor
