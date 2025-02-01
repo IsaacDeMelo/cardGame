@@ -541,7 +541,7 @@
             </div>
         </div>
         <div id="cartas-container">
-            <!-- data-id -->
+            <!-- data-id Life-->
         </div>
     </div>
 
@@ -849,10 +849,10 @@
                             //document.getElementById(`card-npc-old`).innerHTML = document.getElementById(`card-npc`).innerHTML;
 
                             if (Array.isArray(cartaP1)) {
-                                 
+
                                 cartaP1.forEach(element => {
                                     document.getElementById(`sub-card-player-${element.id}`).style.opacity = 0;
-                    
+
                                 });
                             } else {
 
@@ -921,8 +921,8 @@
 
                 // Função para carregar cartas via AJAX
                 async function carregarCartas() {
-                    try {   
-                        
+                    try {
+
                         // Gera um número aleatório (0 ou 1)
                         const response = await fetch('/npc'); // Faz uma requisição para a rota '/cartas'
                         if (response.ok) { // Verifica se a resposta foi bem-sucedida (status 200-299)
@@ -949,7 +949,7 @@
                         let i = 3;
                         setInterval(() => {
                             console.log(cartasEmCampo);
-                            
+
                             if (endBattle == false) {
                                 if (playerTurn == false) {
 
@@ -1016,7 +1016,7 @@
                                                 } else {
                                                     playerwin = true;
                                                     endGame("Você venceu! Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!<div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero jogar novamente!</button></div>");
-                                                    alert("AFEE")
+
                                                 }
                                             }
 
@@ -1118,12 +1118,40 @@
                             } else if (players.NPC.energia < 0) {
                                 players.NPC.energia = 0;
                             }
-                    
-                            if (window.getComputedStyle(document.getElementById("cartas-container")).height === "0px"){
-                                endGame("Parece que você perdeu desta vez. Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!  <div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero tentar novamente!</button></div>");  
-                            }  
-                
-            
+
+                            if (window.getComputedStyle(document.getElementById("cartas-container")).height === "0px") {
+                                setTimeout(() => {
+                                    if (playerTurn = true) {
+                                        if (window.getComputedStyle(document.getElementById("cartas-container")).height === "0px") {
+                                            setTimeout(() => {
+                                                console.log("Turno: " + playerTurn + " " + playerwin);
+                                            console.log(vidaNPC)
+                                                if (playerTurn){
+
+                                                }
+                                                if (vidaNPC == 0) {
+                                                    if (energiaNPC > energiaPlayer) {
+                                                        endGame("Parece que você perdeu desta vez, por falta de cartas. Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!  <div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero tentar novamente!</button></div>");
+                                                    }
+                                                    if (energiaNPC < energiaPlayer) {
+                                                        playerwin = true;
+                                                        endGame("Você venceu! Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!<div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero jogar novamente!</button></div>");
+                                                    }
+                                                } else {    
+                                                    if (playerwin == undefined){
+                                                        endGame("Parece que você perdeu desta vez, por falta de cartas. Você gostou do Jogo? o RPG ficará pronto em breve, e terá muitos sistemas de evolução e progressão, além de duelos contra outros jogadores. Garanto que você vai gostar! Pode fazer a pré inscrição agora, e assim você vai receber em primeira mão o link da comunidade no Whatsapp quando estiver tudo pronto! Só precisa do seu número e de como você gosta de ser chamado!  <div style='display:flex'><a href='https://docs.google.com/forms/d/e/1FAIpQLSeumiN90wlN-iBA0xcVY5qST3sya36PwOWd_25FsXUtI4WUIQ/viewform?usp=dialog'><button>Quero fazer a Pré-Inscrição!</button></a><button  onclick='window.location.reload()'>Quero tentar novamente!</button></div>");
+                                                    }
+                                                }
+                                               
+                                                    
+                                            }, 3000);
+
+                                        }
+                                    }
+                                }, 3000);
+                            }
+
+
                             const npcLife = document.getElementById('npcLife');
                             const npcEnergy = document.getElementById('npcEnergy');
                             const playerLife = document.getElementById('playerLife');
